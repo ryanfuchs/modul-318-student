@@ -16,7 +16,7 @@ namespace TransportApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SearchStation());
+            Application.Run(new SearchConnectionsForm());
         }
     }
 }
