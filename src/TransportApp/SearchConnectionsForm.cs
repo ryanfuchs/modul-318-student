@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.Remoting.Lifetime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -82,18 +83,29 @@ namespace TransportApp
             }
         }
 
-        private void LeaveFocus(object sender, EventArgs e)//Sobald der Fokus in eiener TextBox verlasen wird diese Methode aufgeruffen
+        public void LeaveFocus()
         {
-            if (this.lsbFrom.Focused != true || this.lsbTo.Focused != true)
-            {
-                this.lsbFrom.Items.Clear();
-                this.lsbFrom.Size = this.lsbFrom.MinimumSize;
-                this.lsbFrom.Enabled = false;
+            this.lsbFrom.Items.Clear();
+            this.lsbFrom.Size = this.lsbFrom.MinimumSize;
+            this.lsbFrom.Enabled = false;
+            
+            this.lsbTo.Items.Clear();
+            this.lsbTo.Enabled = false;
+            this.lsbTo.Size = this.lsbFrom.MinimumSize;
+        }
 
-                this.lsbTo.Items.Clear();
-                this.lsbTo.Size = this.lsbTo.MinimumSize;
-                this.lsbTo.Enabled = false;
-            }
+        private void SelectItemOutOfListBoxFrom(object sender, EventArgs e)
+        {
+            this.txbFrom.Text = Convert.ToString(this.lsbFrom.SelectedItem);
+
+            this.LeaveFocus();
+        }
+
+        private void SelectItemOutOfListBoxTo(object sender, EventArgs e)
+        {
+            this.txbTo.Text = Convert.ToString(this.lsbTo.SelectedItem);
+
+            this.LeaveFocus();
         }
     }
 }

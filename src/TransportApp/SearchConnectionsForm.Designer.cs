@@ -146,13 +146,12 @@
             // 
             // rdbNow
             // 
-            this.rdbNow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.rdbNow.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rdbNow.AutoSize = true;
             this.rdbNow.Location = new System.Drawing.Point(419, 78);
             this.rdbNow.Name = "rdbNow";
-            this.rdbNow.Size = new System.Drawing.Size(14, 24);
+            this.rdbNow.Size = new System.Drawing.Size(14, 17);
             this.rdbNow.TabIndex = 11;
             this.rdbNow.TabStop = true;
             this.rdbNow.Text = "radioButton1";
@@ -176,7 +175,7 @@
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(72, 190);
+            this.btnSearch.Location = new System.Drawing.Point(72, 187);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(341, 24);
             this.btnSearch.TabIndex = 14;
@@ -221,7 +220,7 @@
             this.ColumnDepartion,
             this.ColumnArrival,
             this.ColumnDuration});
-            this.dgvDepatures.Location = new System.Drawing.Point(72, 220);
+            this.dgvDepatures.Location = new System.Drawing.Point(72, 217);
             this.dgvDepatures.Name = "dgvDepatures";
             this.dgvDepatures.Size = new System.Drawing.Size(341, 456);
             this.dgvDepatures.TabIndex = 16;
@@ -261,6 +260,7 @@
             this.lsbFrom.Name = "lsbFrom";
             this.lsbFrom.Size = new System.Drawing.Size(341, 17);
             this.lsbFrom.TabIndex = 2;
+            this.lsbFrom.SelectedIndexChanged += new System.EventHandler(this.SelectItemOutOfListBoxFrom);
             // 
             // txbFrom
             // 
@@ -273,7 +273,6 @@
             this.txbFrom.Size = new System.Drawing.Size(341, 20);
             this.txbFrom.TabIndex = 17;
             this.txbFrom.TextChanged += new System.EventHandler(this.SearchStation);
-            this.txbFrom.Leave += new System.EventHandler(this.LeaveFocus);
             // 
             // lsbTo
             // 
@@ -286,6 +285,7 @@
             this.lsbTo.Name = "lsbTo";
             this.lsbTo.Size = new System.Drawing.Size(341, 17);
             this.lsbTo.TabIndex = 18;
+            this.lsbTo.SelectedIndexChanged += new System.EventHandler(this.SelectItemOutOfListBoxTo);
             // 
             // txbTo
             // 
@@ -298,7 +298,6 @@
             this.txbTo.Size = new System.Drawing.Size(341, 20);
             this.txbTo.TabIndex = 19;
             this.txbTo.TextChanged += new System.EventHandler(this.SearchStation);
-            this.txbTo.Leave += new System.EventHandler(this.LeaveFocus);
             // 
             // dtpDepature
             // 
@@ -311,13 +310,12 @@
             // 
             // rdbDateTime
             // 
-            this.rdbDateTime.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.rdbDateTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rdbDateTime.AutoSize = true;
             this.rdbDateTime.Location = new System.Drawing.Point(419, 108);
             this.rdbDateTime.Name = "rdbDateTime";
-            this.rdbDateTime.Size = new System.Drawing.Size(14, 20);
+            this.rdbDateTime.Size = new System.Drawing.Size(14, 17);
             this.rdbDateTime.TabIndex = 12;
             this.rdbDateTime.TabStop = true;
             this.rdbDateTime.Text = "radioButton2";
