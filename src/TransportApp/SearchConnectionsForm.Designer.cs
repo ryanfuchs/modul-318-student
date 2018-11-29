@@ -31,13 +31,9 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnStationForm = new System.Windows.Forms.Button();
             this.btnConnectionsForm = new System.Windows.Forms.Button();
-            this.cmbFrom = new System.Windows.Forms.ComboBox();
-            this.cmbTo = new System.Windows.Forms.ComboBox();
             this.lblFrom = new System.Windows.Forms.Label();
             this.lblTo = new System.Windows.Forms.Label();
-            this.dtpDepature = new System.Windows.Forms.DateTimePicker();
             this.rdbNow = new System.Windows.Forms.RadioButton();
-            this.rdbDateTime = new System.Windows.Forms.RadioButton();
             this.lblNow = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnDeparturesForm = new System.Windows.Forms.Button();
@@ -47,6 +43,12 @@
             this.ColumnDepartion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnArrival = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lsbFrom = new System.Windows.Forms.ListBox();
+            this.txbFrom = new System.Windows.Forms.TextBox();
+            this.lsbTo = new System.Windows.Forms.ListBox();
+            this.txbTo = new System.Windows.Forms.TextBox();
+            this.dtpDepature = new System.Windows.Forms.DateTimePicker();
+            this.rdbDateTime = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepatures)).BeginInit();
             this.SuspendLayout();
@@ -63,26 +65,30 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.71459F));
             this.tableLayoutPanel1.Controls.Add(this.btnStationForm, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnConnectionsForm, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.cmbFrom, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.cmbTo, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.lblFrom, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.lblTo, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.dtpDepature, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lblTo, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.rdbNow, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.rdbDateTime, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.lblNow, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btnSearch, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.btnSearch, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.btnDeparturesForm, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblDepature, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.dgvDepatures, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.dgvDepatures, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.lsbFrom, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txbFrom, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lsbTo, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.txbTo, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.dtpDepature, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(this.rdbDateTime, 2, 4);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowCount = 9;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(566, 627);
@@ -112,30 +118,6 @@
             this.btnConnectionsForm.Text = "Connections";
             this.btnConnectionsForm.UseVisualStyleBackColor = true;
             // 
-            // cmbFrom
-            // 
-            this.cmbFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbFrom.FormattingEnabled = true;
-            this.cmbFrom.Location = new System.Drawing.Point(72, 78);
-            this.cmbFrom.Name = "cmbFrom";
-            this.cmbFrom.Size = new System.Drawing.Size(341, 21);
-            this.cmbFrom.TabIndex = 6;
-            this.cmbFrom.DropDown += new System.EventHandler(this.SearchStationFrom);
-            // 
-            // cmbTo
-            // 
-            this.cmbTo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbTo.FormattingEnabled = true;
-            this.cmbTo.Location = new System.Drawing.Point(72, 108);
-            this.cmbTo.Name = "cmbTo";
-            this.cmbTo.Size = new System.Drawing.Size(341, 21);
-            this.cmbTo.TabIndex = 7;
-            this.cmbTo.DropDown += new System.EventHandler(this.SearchStationTo);
-            // 
             // lblFrom
             // 
             this.lblFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -155,22 +137,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTo.AutoSize = true;
-            this.lblTo.Location = new System.Drawing.Point(3, 105);
+            this.lblTo.Location = new System.Drawing.Point(3, 131);
             this.lblTo.Name = "lblTo";
             this.lblTo.Size = new System.Drawing.Size(63, 30);
             this.lblTo.TabIndex = 9;
             this.lblTo.Text = "To:";
             this.lblTo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dtpDepature
-            // 
-            this.dtpDepature.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpDepature.Location = new System.Drawing.Point(439, 108);
-            this.dtpDepature.Name = "dtpDepature";
-            this.dtpDepature.Size = new System.Drawing.Size(124, 20);
-            this.dtpDepature.TabIndex = 10;
             // 
             // rdbNow
             // 
@@ -185,20 +157,6 @@
             this.rdbNow.TabStop = true;
             this.rdbNow.Text = "radioButton1";
             this.rdbNow.UseVisualStyleBackColor = true;
-            // 
-            // rdbDateTime
-            // 
-            this.rdbDateTime.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rdbDateTime.AutoSize = true;
-            this.rdbDateTime.Location = new System.Drawing.Point(419, 108);
-            this.rdbDateTime.Name = "rdbDateTime";
-            this.rdbDateTime.Size = new System.Drawing.Size(14, 24);
-            this.rdbDateTime.TabIndex = 12;
-            this.rdbDateTime.TabStop = true;
-            this.rdbDateTime.Text = "radioButton2";
-            this.rdbDateTime.UseVisualStyleBackColor = true;
             // 
             // lblNow
             // 
@@ -218,11 +176,11 @@
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(72, 138);
+            this.btnSearch.Location = new System.Drawing.Point(72, 190);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(341, 24);
             this.btnSearch.TabIndex = 14;
-            this.btnSearch.Text = "SearchConnectons";
+            this.btnSearch.Text = "Search Connectons";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.SearchConnections);
             // 
@@ -263,7 +221,7 @@
             this.ColumnDepartion,
             this.ColumnArrival,
             this.ColumnDuration});
-            this.dgvDepatures.Location = new System.Drawing.Point(72, 168);
+            this.dgvDepatures.Location = new System.Drawing.Point(72, 220);
             this.dgvDepatures.Name = "dgvDepatures";
             this.dgvDepatures.Size = new System.Drawing.Size(341, 456);
             this.dgvDepatures.TabIndex = 16;
@@ -292,6 +250,79 @@
             this.ColumnDuration.Name = "ColumnDuration";
             this.ColumnDuration.Width = 75;
             // 
+            // lsbFrom
+            // 
+            this.lsbFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsbFrom.Enabled = false;
+            this.lsbFrom.FormattingEnabled = true;
+            this.lsbFrom.Location = new System.Drawing.Point(72, 108);
+            this.lsbFrom.Name = "lsbFrom";
+            this.lsbFrom.Size = new System.Drawing.Size(341, 17);
+            this.lsbFrom.TabIndex = 2;
+            // 
+            // txbFrom
+            // 
+            this.txbFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbFrom.BackColor = System.Drawing.SystemColors.Window;
+            this.txbFrom.Location = new System.Drawing.Point(72, 78);
+            this.txbFrom.Name = "txbFrom";
+            this.txbFrom.Size = new System.Drawing.Size(341, 20);
+            this.txbFrom.TabIndex = 17;
+            this.txbFrom.TextChanged += new System.EventHandler(this.SearchStation);
+            this.txbFrom.Leave += new System.EventHandler(this.LeaveFocus);
+            // 
+            // lsbTo
+            // 
+            this.lsbTo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsbTo.Enabled = false;
+            this.lsbTo.FormattingEnabled = true;
+            this.lsbTo.Location = new System.Drawing.Point(72, 164);
+            this.lsbTo.Name = "lsbTo";
+            this.lsbTo.Size = new System.Drawing.Size(341, 17);
+            this.lsbTo.TabIndex = 18;
+            // 
+            // txbTo
+            // 
+            this.txbTo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbTo.BackColor = System.Drawing.SystemColors.Window;
+            this.txbTo.Location = new System.Drawing.Point(72, 134);
+            this.txbTo.Name = "txbTo";
+            this.txbTo.Size = new System.Drawing.Size(341, 20);
+            this.txbTo.TabIndex = 19;
+            this.txbTo.TextChanged += new System.EventHandler(this.SearchStation);
+            this.txbTo.Leave += new System.EventHandler(this.LeaveFocus);
+            // 
+            // dtpDepature
+            // 
+            this.dtpDepature.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpDepature.Location = new System.Drawing.Point(439, 108);
+            this.dtpDepature.Name = "dtpDepature";
+            this.dtpDepature.Size = new System.Drawing.Size(124, 20);
+            this.dtpDepature.TabIndex = 10;
+            // 
+            // rdbDateTime
+            // 
+            this.rdbDateTime.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rdbDateTime.AutoSize = true;
+            this.rdbDateTime.Location = new System.Drawing.Point(419, 108);
+            this.rdbDateTime.Name = "rdbDateTime";
+            this.rdbDateTime.Size = new System.Drawing.Size(14, 20);
+            this.rdbDateTime.TabIndex = 12;
+            this.rdbDateTime.TabStop = true;
+            this.rdbDateTime.Text = "radioButton2";
+            this.rdbDateTime.UseVisualStyleBackColor = true;
+            // 
             // SearchConnectionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,8 +346,6 @@
         private System.Windows.Forms.Button btnDeparturesForm;
         private System.Windows.Forms.Button btnStationForm;
         private System.Windows.Forms.Button btnConnectionsForm;
-        private System.Windows.Forms.ComboBox cmbFrom;
-        private System.Windows.Forms.ComboBox cmbTo;
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.Label lblTo;
         private System.Windows.Forms.DateTimePicker dtpDepature;
@@ -330,5 +359,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDepartion;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnArrival;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDuration;
+        public System.Windows.Forms.ListBox lsbFrom;
+        private System.Windows.Forms.TextBox txbFrom;
+        public System.Windows.Forms.ListBox lsbTo;
+        private System.Windows.Forms.TextBox txbTo;
     }
 }
