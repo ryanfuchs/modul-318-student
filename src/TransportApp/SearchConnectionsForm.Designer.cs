@@ -102,7 +102,7 @@
             this.btnStationForm.Location = new System.Drawing.Point(3, 3);
             this.btnStationForm.Name = "btnStationForm";
             this.btnStationForm.Size = new System.Drawing.Size(63, 24);
-            this.btnStationForm.TabIndex = 4;
+            this.btnStationForm.TabIndex = 1;
             this.btnStationForm.Text = "Station";
             this.btnStationForm.UseVisualStyleBackColor = true;
             // 
@@ -114,7 +114,7 @@
             this.btnConnectionsForm.Location = new System.Drawing.Point(72, 3);
             this.btnConnectionsForm.Name = "btnConnectionsForm";
             this.btnConnectionsForm.Size = new System.Drawing.Size(341, 24);
-            this.btnConnectionsForm.TabIndex = 3;
+            this.btnConnectionsForm.TabIndex = 2;
             this.btnConnectionsForm.Text = "Connections";
             this.btnConnectionsForm.UseVisualStyleBackColor = true;
             // 
@@ -149,10 +149,11 @@
             this.rdbNow.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rdbNow.AutoSize = true;
+            this.rdbNow.Checked = true;
             this.rdbNow.Location = new System.Drawing.Point(419, 78);
             this.rdbNow.Name = "rdbNow";
             this.rdbNow.Size = new System.Drawing.Size(14, 17);
-            this.rdbNow.TabIndex = 11;
+            this.rdbNow.TabIndex = 9;
             this.rdbNow.TabStop = true;
             this.rdbNow.Text = "radioButton1";
             this.rdbNow.UseVisualStyleBackColor = true;
@@ -178,7 +179,7 @@
             this.btnSearch.Location = new System.Drawing.Point(72, 187);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(341, 24);
-            this.btnSearch.TabIndex = 14;
+            this.btnSearch.TabIndex = 8;
             this.btnSearch.Text = "Search Connectons";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.SearchConnections);
@@ -192,7 +193,7 @@
             this.btnDeparturesForm.Location = new System.Drawing.Point(419, 3);
             this.btnDeparturesForm.Name = "btnDeparturesForm";
             this.btnDeparturesForm.Size = new System.Drawing.Size(144, 24);
-            this.btnDeparturesForm.TabIndex = 5;
+            this.btnDeparturesForm.TabIndex = 3;
             this.btnDeparturesForm.Text = "Departures";
             this.btnDeparturesForm.UseVisualStyleBackColor = true;
             // 
@@ -224,6 +225,7 @@
             this.dgvDepatures.Name = "dgvDepatures";
             this.dgvDepatures.Size = new System.Drawing.Size(341, 456);
             this.dgvDepatures.TabIndex = 16;
+            this.dgvDepatures.TabStop = false;
             // 
             // ColumnPlatform
             // 
@@ -259,7 +261,7 @@
             this.lsbFrom.Location = new System.Drawing.Point(72, 108);
             this.lsbFrom.Name = "lsbFrom";
             this.lsbFrom.Size = new System.Drawing.Size(341, 17);
-            this.lsbFrom.TabIndex = 2;
+            this.lsbFrom.TabIndex = 5;
             this.lsbFrom.SelectedIndexChanged += new System.EventHandler(this.SelectItemOutOfListBoxFrom);
             // 
             // txbFrom
@@ -271,7 +273,7 @@
             this.txbFrom.Location = new System.Drawing.Point(72, 78);
             this.txbFrom.Name = "txbFrom";
             this.txbFrom.Size = new System.Drawing.Size(341, 20);
-            this.txbFrom.TabIndex = 17;
+            this.txbFrom.TabIndex = 4;
             this.txbFrom.TextChanged += new System.EventHandler(this.SearchStation);
             // 
             // lsbTo
@@ -284,7 +286,7 @@
             this.lsbTo.Location = new System.Drawing.Point(72, 164);
             this.lsbTo.Name = "lsbTo";
             this.lsbTo.Size = new System.Drawing.Size(341, 17);
-            this.lsbTo.TabIndex = 18;
+            this.lsbTo.TabIndex = 7;
             this.lsbTo.SelectedIndexChanged += new System.EventHandler(this.SelectItemOutOfListBoxTo);
             // 
             // txbTo
@@ -296,7 +298,7 @@
             this.txbTo.Location = new System.Drawing.Point(72, 134);
             this.txbTo.Name = "txbTo";
             this.txbTo.Size = new System.Drawing.Size(341, 20);
-            this.txbTo.TabIndex = 19;
+            this.txbTo.TabIndex = 6;
             this.txbTo.TextChanged += new System.EventHandler(this.SearchStation);
             // 
             // dtpDepature
@@ -306,7 +308,7 @@
             this.dtpDepature.Location = new System.Drawing.Point(439, 108);
             this.dtpDepature.Name = "dtpDepature";
             this.dtpDepature.Size = new System.Drawing.Size(124, 20);
-            this.dtpDepature.TabIndex = 10;
+            this.dtpDepature.TabIndex = 11;
             // 
             // rdbDateTime
             // 
@@ -316,8 +318,7 @@
             this.rdbDateTime.Location = new System.Drawing.Point(419, 108);
             this.rdbDateTime.Name = "rdbDateTime";
             this.rdbDateTime.Size = new System.Drawing.Size(14, 17);
-            this.rdbDateTime.TabIndex = 12;
-            this.rdbDateTime.TabStop = true;
+            this.rdbDateTime.TabIndex = 10;
             this.rdbDateTime.Text = "radioButton2";
             this.rdbDateTime.UseVisualStyleBackColor = true;
             // 
