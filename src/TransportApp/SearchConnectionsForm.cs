@@ -22,7 +22,7 @@ namespace TransportApp
             InitializeComponent();
             this.lsbFrom.AutoSize = true;
             this.lsbTo.AutoSize = true;
-            this.dtpDepartureDate.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            this.txbFrom.Focus();
         }
 
         private void SearchStation(object sender, EventArgs e)
@@ -119,6 +119,24 @@ namespace TransportApp
             this.txbTo.Text = Convert.ToString(this.lsbTo.SelectedItem);
 
             this.LeaveFocus();
+        }
+
+        private void OtherForm(object sender, EventArgs e)
+        {
+            var SenderButton = sender as Button;
+
+            if (SenderButton.Name == this.btnConnectionsForm.Name)
+            {
+                this.Hide();
+                Forms.OpenSearchConnectionsForm();
+            }
+
+            if (SenderButton.Name == this.btnDeparturesForm.Name)
+            {
+                this.Hide();
+                Forms.OpenSearchDeparturesForm();               
+            }
+
         }
     }
 }

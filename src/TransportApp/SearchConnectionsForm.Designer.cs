@@ -29,27 +29,26 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnStationForm = new System.Windows.Forms.Button();
             this.btnConnectionsForm = new System.Windows.Forms.Button();
             this.lblFrom = new System.Windows.Forms.Label();
             this.lblTo = new System.Windows.Forms.Label();
             this.rdbNow = new System.Windows.Forms.RadioButton();
             this.lblNow = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.btnDeparturesForm = new System.Windows.Forms.Button();
             this.lblDepature = new System.Windows.Forms.Label();
             this.dgvDepatures = new System.Windows.Forms.DataGridView();
+            this.ColumnPlatform = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDepartion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnArrival = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lsbFrom = new System.Windows.Forms.ListBox();
             this.txbFrom = new System.Windows.Forms.TextBox();
             this.lsbTo = new System.Windows.Forms.ListBox();
             this.txbTo = new System.Windows.Forms.TextBox();
             this.dtpDepartureDate = new System.Windows.Forms.DateTimePicker();
             this.rdbDateTime = new System.Windows.Forms.RadioButton();
-            this.ColumnPlatform = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDepartion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnArrival = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpDepartureTime = new System.Windows.Forms.DateTimePicker();
+            this.btnDeparturesForm = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepatures)).BeginInit();
             this.SuspendLayout();
@@ -65,8 +64,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.62138F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.04348F));
-            this.tableLayoutPanel1.Controls.Add(this.btnStationForm, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnConnectionsForm, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblFrom, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.lblTo, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.rdbNow, 2, 3);
@@ -78,10 +75,11 @@
             this.tableLayoutPanel1.Controls.Add(this.txbFrom, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.lsbTo, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.txbTo, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.dtpDepartureDate, 3, 4);
-            this.tableLayoutPanel1.Controls.Add(this.rdbDateTime, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.dtpDepartureTime, 4, 4);
-            this.tableLayoutPanel1.Controls.Add(this.btnDeparturesForm, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnConnectionsForm, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnDeparturesForm, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.rdbDateTime, 2, 5);
+            this.tableLayoutPanel1.Controls.Add(this.dtpDepartureDate, 3, 5);
+            this.tableLayoutPanel1.Controls.Add(this.dtpDepartureTime, 4, 5);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 9;
@@ -94,20 +92,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(682, 627);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(682, 473);
             this.tableLayoutPanel1.TabIndex = 7;
-            // 
-            // btnStationForm
-            // 
-            this.btnStationForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStationForm.Location = new System.Drawing.Point(3, 3);
-            this.btnStationForm.Name = "btnStationForm";
-            this.btnStationForm.Size = new System.Drawing.Size(67, 24);
-            this.btnStationForm.TabIndex = 1;
-            this.btnStationForm.Text = "Station";
-            this.btnStationForm.UseVisualStyleBackColor = true;
             // 
             // btnConnectionsForm
             // 
@@ -115,12 +101,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.btnConnectionsForm, 3);
-            this.btnConnectionsForm.Location = new System.Drawing.Point(76, 3);
+            this.btnConnectionsForm.Location = new System.Drawing.Point(3, 3);
             this.btnConnectionsForm.Name = "btnConnectionsForm";
-            this.btnConnectionsForm.Size = new System.Drawing.Size(515, 24);
+            this.btnConnectionsForm.Size = new System.Drawing.Size(452, 24);
             this.btnConnectionsForm.TabIndex = 2;
             this.btnConnectionsForm.Text = "Connections";
             this.btnConnectionsForm.UseVisualStyleBackColor = true;
+            this.btnConnectionsForm.Click += new System.EventHandler(this.OtherForm);
             // 
             // lblFrom
             // 
@@ -141,7 +128,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTo.AutoSize = true;
-            this.lblTo.Location = new System.Drawing.Point(3, 131);
+            this.lblTo.Location = new System.Drawing.Point(3, 128);
             this.lblTo.Name = "lblTo";
             this.lblTo.Size = new System.Drawing.Size(67, 30);
             this.lblTo.TabIndex = 9;
@@ -180,25 +167,13 @@
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(76, 187);
+            this.btnSearch.Location = new System.Drawing.Point(76, 184);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(359, 24);
             this.btnSearch.TabIndex = 8;
             this.btnSearch.Text = "Search Connectons";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.SearchConnections);
-            // 
-            // btnDeparturesForm
-            // 
-            this.btnDeparturesForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeparturesForm.Location = new System.Drawing.Point(597, 3);
-            this.btnDeparturesForm.Name = "btnDeparturesForm";
-            this.btnDeparturesForm.Size = new System.Drawing.Size(82, 24);
-            this.btnDeparturesForm.TabIndex = 3;
-            this.btnDeparturesForm.Text = "Departures";
-            this.btnDeparturesForm.UseVisualStyleBackColor = true;
             // 
             // lblDepature
             // 
@@ -226,12 +201,36 @@
             this.ColumnArrival,
             this.ColumnDuration});
             this.tableLayoutPanel1.SetColumnSpan(this.dgvDepatures, 3);
-            this.dgvDepatures.Location = new System.Drawing.Point(76, 217);
+            this.dgvDepatures.Location = new System.Drawing.Point(76, 214);
             this.dgvDepatures.Name = "dgvDepatures";
             this.dgvDepatures.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dgvDepatures.Size = new System.Drawing.Size(515, 456);
+            this.dgvDepatures.Size = new System.Drawing.Size(515, 256);
             this.dgvDepatures.TabIndex = 16;
             this.dgvDepatures.TabStop = false;
+            // 
+            // ColumnPlatform
+            // 
+            this.ColumnPlatform.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnPlatform.HeaderText = "Platform";
+            this.ColumnPlatform.Name = "ColumnPlatform";
+            // 
+            // ColumnDepartion
+            // 
+            this.ColumnDepartion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnDepartion.HeaderText = "Departion";
+            this.ColumnDepartion.Name = "ColumnDepartion";
+            // 
+            // ColumnArrival
+            // 
+            this.ColumnArrival.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnArrival.HeaderText = "Arrival";
+            this.ColumnArrival.Name = "ColumnArrival";
+            // 
+            // ColumnDuration
+            // 
+            this.ColumnDuration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnDuration.HeaderText = "Duration";
+            this.ColumnDuration.Name = "ColumnDuration";
             // 
             // lsbFrom
             // 
@@ -266,7 +265,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lsbTo.Enabled = false;
             this.lsbTo.FormattingEnabled = true;
-            this.lsbTo.Location = new System.Drawing.Point(76, 164);
+            this.lsbTo.Location = new System.Drawing.Point(76, 161);
             this.lsbTo.Name = "lsbTo";
             this.lsbTo.Size = new System.Drawing.Size(359, 17);
             this.lsbTo.TabIndex = 7;
@@ -279,7 +278,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbTo.BackColor = System.Drawing.SystemColors.Window;
-            this.txbTo.Location = new System.Drawing.Point(76, 134);
+            this.txbTo.Location = new System.Drawing.Point(76, 131);
             this.txbTo.Name = "txbTo";
             this.txbTo.Size = new System.Drawing.Size(359, 20);
             this.txbTo.TabIndex = 6;
@@ -289,7 +288,7 @@
             // 
             this.dtpDepartureDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpDepartureDate.Location = new System.Drawing.Point(461, 108);
+            this.dtpDepartureDate.Location = new System.Drawing.Point(461, 131);
             this.dtpDepartureDate.Name = "dtpDepartureDate";
             this.dtpDepartureDate.Size = new System.Drawing.Size(130, 20);
             this.dtpDepartureDate.TabIndex = 11;
@@ -299,55 +298,45 @@
             this.rdbDateTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rdbDateTime.AutoSize = true;
-            this.rdbDateTime.Location = new System.Drawing.Point(441, 108);
+            this.rdbDateTime.Location = new System.Drawing.Point(441, 131);
             this.rdbDateTime.Name = "rdbDateTime";
             this.rdbDateTime.Size = new System.Drawing.Size(14, 17);
             this.rdbDateTime.TabIndex = 10;
             this.rdbDateTime.Text = "radioButton2";
             this.rdbDateTime.UseVisualStyleBackColor = true;
             // 
-            // ColumnPlatform
-            // 
-            this.ColumnPlatform.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnPlatform.HeaderText = "Platform";
-            this.ColumnPlatform.Name = "ColumnPlatform";
-            // 
-            // ColumnDepartion
-            // 
-            this.ColumnDepartion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnDepartion.HeaderText = "Departion";
-            this.ColumnDepartion.Name = "ColumnDepartion";
-            // 
-            // ColumnArrival
-            // 
-            this.ColumnArrival.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnArrival.HeaderText = "Arrival";
-            this.ColumnArrival.Name = "ColumnArrival";
-            // 
-            // ColumnDuration
-            // 
-            this.ColumnDuration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnDuration.HeaderText = "Duration";
-            this.ColumnDuration.Name = "ColumnDuration";
-            // 
             // dtpDepartureTime
             // 
             this.dtpDepartureTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpDepartureTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpDepartureTime.Location = new System.Drawing.Point(597, 108);
+            this.dtpDepartureTime.Location = new System.Drawing.Point(597, 131);
             this.dtpDepartureTime.Name = "dtpDepartureTime";
             this.dtpDepartureTime.ShowUpDown = true;
             this.dtpDepartureTime.Size = new System.Drawing.Size(82, 20);
             this.dtpDepartureTime.TabIndex = 17;
             // 
+            // btnDeparturesForm
+            // 
+            this.btnDeparturesForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.SetColumnSpan(this.btnDeparturesForm, 2);
+            this.btnDeparturesForm.Location = new System.Drawing.Point(461, 3);
+            this.btnDeparturesForm.Name = "btnDeparturesForm";
+            this.btnDeparturesForm.Size = new System.Drawing.Size(218, 24);
+            this.btnDeparturesForm.TabIndex = 3;
+            this.btnDeparturesForm.Text = "Departures";
+            this.btnDeparturesForm.UseVisualStyleBackColor = true;
+            this.btnDeparturesForm.Click += new System.EventHandler(this.OtherForm);
+            // 
             // SearchConnectionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(706, 651);
+            this.ClientSize = new System.Drawing.Size(706, 497);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(659, 690);
+            this.MinimumSize = new System.Drawing.Size(722, 536);
             this.Name = "SearchConnectionsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connections";
@@ -362,7 +351,6 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnDeparturesForm;
-        private System.Windows.Forms.Button btnStationForm;
         private System.Windows.Forms.Button btnConnectionsForm;
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.Label lblTo;

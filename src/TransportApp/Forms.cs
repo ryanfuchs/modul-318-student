@@ -8,22 +8,22 @@ namespace TransportApp
 {
     class Forms 
     {
-        public void OpenSearchStationForm()
-        {
-            //SearchConnectionsForm FormSearchStation = new SearchConnectionsForm();
-            //FormSearchStation.Show();
-        }
-
-        public void OpenSearchConnectionsForm()
+        static public void OpenSearchConnectionsForm()
         {
             SearchConnectionsForm FormSearchConnection = new SearchConnectionsForm();
+            CloseForm();
             FormSearchConnection.Show();
         }
 
-        public void OpenSearchDeparturesForm()
+        static public void OpenSearchDeparturesForm()
         {
-            //SearchDeparutresForm FormSearchDepartures = new SearchDepaturesForm();
-            //FormSearchDepartures();
+            SearchDeparturesForm FormSearchDepartures = new SearchDeparturesForm();
+            FormSearchDepartures.Show();
+        }
+
+        public static void CloseForm()
+        {
+            
         }
 
     }

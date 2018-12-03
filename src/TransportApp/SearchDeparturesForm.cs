@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TransportApp
 {
-    public partial class SearchStationForm : Form
+    public partial class SearchDeparturesForm : Form
     {
-        public SearchStationForm()
+        public SearchDeparturesForm()
         {
             InitializeComponent();
         }

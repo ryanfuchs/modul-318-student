@@ -54,11 +54,11 @@
     <Compile Include="SearchConnectionsForm.Designer.cs">
       <DependentUpon>SearchConnectionsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SearchStationForm.cs">
+    <Compile Include="SearchDeparturesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SearchStationForm.Designer.cs">
-      <DependentUpon>SearchStationForm.cs</DependentUpon>
+    <Compile Include="SearchDeparturesForm.Designer.cs">
+      <DependentUpon>SearchDeparturesForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -72,8 +72,8 @@
     <EmbeddedResource Include="SearchConnectionsForm.resx">
       <DependentUpon>SearchConnectionsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SearchStationForm.resx">
-      <DependentUpon>SearchStationForm.cs</DependentUpon>
+    <EmbeddedResource Include="SearchDeparturesForm.resx">
+      <DependentUpon>SearchDeparturesForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
