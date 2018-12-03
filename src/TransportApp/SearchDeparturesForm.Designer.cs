@@ -315,7 +315,7 @@
             this.pbxLocation1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxLocation1.TabIndex = 20;
             this.pbxLocation1.TabStop = false;
-            this.pbxLocation1.Click += new System.EventHandler(this.CurrentLocationMapClick);
+            this.pbxLocation1.Click += new System.EventHandler(this.StationNameMapClick);
             // 
             // pictureBox1
             // 

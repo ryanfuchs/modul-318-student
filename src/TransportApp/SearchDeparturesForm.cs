@@ -84,8 +84,9 @@ namespace TransportApp
 
             if (TextBoxName == "txbCurrentLocation")
             {
-                if (TempStation != null || this.txbCurrentLocation.Text != null && this.txbStationName.Text != null)
+                if (!(TempStation.Count == 0 || this.txbCurrentLocation.Text == ""));
                 {
+
                     TempStationObject = TempStation.First();
 
                     SwissTransport.Transport StationLocation = new Transport();

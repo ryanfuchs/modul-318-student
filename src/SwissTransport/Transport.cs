@@ -26,7 +26,7 @@ namespace SwissTransport
 
         public Stations GetStationsCordinates(Station s)
         {
-            var request = CreateWebRequest("http://transport.opendata.ch/v1/locations?x" + s.Coordinate.XCoordinate + "&y" + s.Coordinate.YCoordinate);
+            var request = CreateWebRequest("http://transport.opendata.ch/v1/locations?x=" + s.Coordinate.XCoordinate + "&y=" + s.Coordinate.YCoordinate);
             var response = request.GetResponse();
             var responseStream = response.GetResponseStream();
 
