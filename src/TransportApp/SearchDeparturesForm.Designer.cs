@@ -37,6 +37,10 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblLocation = new System.Windows.Forms.Label();
             this.dgvDepatures = new System.Windows.Forms.DataGridView();
+            this.ColumnStationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDeparture = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lsbStationName = new System.Windows.Forms.ListBox();
             this.txbCurrentLocation = new System.Windows.Forms.TextBox();
             this.btnConnectionsForm = new System.Windows.Forms.Button();
@@ -46,10 +50,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pbxLocation1 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ColumnStationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDeparture = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lsbCurrentLocation = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepatures)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLocation1)).BeginInit();
@@ -77,13 +78,14 @@
             this.tableLayoutPanel1.Controls.Add(this.dgvDepatures, 2, 8);
             this.tableLayoutPanel1.Controls.Add(this.lsbStationName, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.txbCurrentLocation, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.btnConnectionsForm, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnDeparturesForm, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.rdbCurrentLocation, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.txbStationName, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.label1, 4, 5);
             this.tableLayoutPanel1.Controls.Add(this.pbxLocation1, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lsbCurrentLocation, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.btnConnectionsForm, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 9;
@@ -157,7 +159,7 @@
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(102, 161);
+            this.btnSearch.Location = new System.Drawing.Point(102, 184);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(343, 24);
             this.btnSearch.TabIndex = 8;
@@ -190,12 +192,36 @@
             this.ColumnLine,
             this.ColumnTo});
             this.tableLayoutPanel1.SetColumnSpan(this.dgvDepatures, 3);
-            this.dgvDepatures.Location = new System.Drawing.Point(102, 191);
+            this.dgvDepatures.Location = new System.Drawing.Point(102, 214);
             this.dgvDepatures.Name = "dgvDepatures";
             this.dgvDepatures.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvDepatures.Size = new System.Drawing.Size(493, 279);
             this.dgvDepatures.TabIndex = 16;
             this.dgvDepatures.TabStop = false;
+            // 
+            // ColumnStationName
+            // 
+            this.ColumnStationName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnStationName.HeaderText = "Station Name";
+            this.ColumnStationName.Name = "ColumnStationName";
+            // 
+            // ColumnDeparture
+            // 
+            this.ColumnDeparture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnDeparture.HeaderText = "Departure";
+            this.ColumnDeparture.Name = "ColumnDeparture";
+            // 
+            // ColumnLine
+            // 
+            this.ColumnLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnLine.HeaderText = "Line";
+            this.ColumnLine.Name = "ColumnLine";
+            // 
+            // ColumnTo
+            // 
+            this.ColumnTo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnTo.HeaderText = "To";
+            this.ColumnTo.Name = "ColumnTo";
             // 
             // lsbStationName
             // 
@@ -220,19 +246,21 @@
             this.txbCurrentLocation.Name = "txbCurrentLocation";
             this.txbCurrentLocation.Size = new System.Drawing.Size(343, 20);
             this.txbCurrentLocation.TabIndex = 6;
+            this.txbCurrentLocation.TextChanged += new System.EventHandler(this.SearchStation);
             // 
             // btnConnectionsForm
             // 
             this.btnConnectionsForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.btnConnectionsForm, 3);
-            this.btnConnectionsForm.Location = new System.Drawing.Point(33, 3);
+            this.tableLayoutPanel1.SetColumnSpan(this.btnConnectionsForm, 4);
+            this.btnConnectionsForm.Location = new System.Drawing.Point(3, 3);
             this.btnConnectionsForm.Name = "btnConnectionsForm";
-            this.btnConnectionsForm.Size = new System.Drawing.Size(432, 24);
+            this.btnConnectionsForm.Size = new System.Drawing.Size(462, 24);
             this.btnConnectionsForm.TabIndex = 1;
             this.btnConnectionsForm.Text = "Connections";
             this.btnConnectionsForm.UseVisualStyleBackColor = true;
+            this.btnConnectionsForm.Click += new System.EventHandler(this.btnConnectionsForm_Click);
             // 
             // btnDeparturesForm
             // 
@@ -269,6 +297,7 @@
             this.txbStationName.Name = "txbStationName";
             this.txbStationName.Size = new System.Drawing.Size(343, 20);
             this.txbStationName.TabIndex = 3;
+            this.txbStationName.TextChanged += new System.EventHandler(this.SearchStation);
             // 
             // label1
             // 
@@ -316,29 +345,18 @@
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             // 
-            // ColumnStationName
+            // lsbCurrentLocation
             // 
-            this.ColumnStationName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnStationName.HeaderText = "Station Name";
-            this.ColumnStationName.Name = "ColumnStationName";
-            // 
-            // ColumnDeparture
-            // 
-            this.ColumnDeparture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnDeparture.HeaderText = "Departure";
-            this.ColumnDeparture.Name = "ColumnDeparture";
-            // 
-            // ColumnLine
-            // 
-            this.ColumnLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnLine.HeaderText = "Line";
-            this.ColumnLine.Name = "ColumnLine";
-            // 
-            // ColumnTo
-            // 
-            this.ColumnTo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnTo.HeaderText = "To";
-            this.ColumnTo.Name = "ColumnTo";
+            this.lsbCurrentLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsbCurrentLocation.Enabled = false;
+            this.lsbCurrentLocation.FormattingEnabled = true;
+            this.lsbCurrentLocation.Location = new System.Drawing.Point(102, 161);
+            this.lsbCurrentLocation.Name = "lsbCurrentLocation";
+            this.lsbCurrentLocation.Size = new System.Drawing.Size(343, 17);
+            this.lsbCurrentLocation.TabIndex = 22;
+            this.lsbCurrentLocation.Visible = false;
             // 
             // SearchDeparturesForm
             // 
@@ -381,5 +399,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDeparture;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLine;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTo;
+        public System.Windows.Forms.ListBox lsbCurrentLocation;
     }
 }

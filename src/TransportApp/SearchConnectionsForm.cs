@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Lifetime;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,12 +25,6 @@ namespace TransportApp
             this.lsbTo.AutoSize = true;
             this.txbFrom.Focus();
         }
-
-        string YFromCordinates;
-        string XFromCordinates;
-
-        string YToCordinates;
-        string XToCordinates;
 
         private void SearchStation(object sender, EventArgs e)
         {
@@ -116,8 +111,6 @@ namespace TransportApp
         private void SelectItemOutOfListBoxFrom(object sender, EventArgs e)
         {
             this.txbFrom.Text = Convert.ToString(this.lsbFrom.SelectedItem);
-            
-            this.XFromCordinates = Convert.ToString(this.lsbFrom.SelectedItem);
 
             this.LeaveFocus();
         }
@@ -129,20 +122,14 @@ namespace TransportApp
             this.LeaveFocus();
         }
 
-        private void OtherForm(object sender, EventArgs e)
+        private void OtherForm(object sender, EventArgs e)//Wird beim betätigen der beiden btn für das Öffnen der Forms ausgelöst
         {
             var SenderButton = sender as Button;
-
-            if (SenderButton.Name == this.btnConnectionsForm.Name)
-            {
-                this.Hide();
-                Forms.OpenSearchConnectionsForm();
-            }
 
             if (SenderButton.Name == this.btnDeparturesForm.Name)
             {
                 this.Hide();
-                Forms.OpenSearchDeparturesForm();               
+                Forms.OpenSearchDeparturesForm(this);
             }
 
         }
@@ -168,7 +155,18 @@ namespace TransportApp
 
             Station s = TempStation.First();
 
+            if (s.Coordinate.YCoordinate == null || s.Coordinate.XCoordinate == null)
+            {
+                s.Coordinate.XCoordinate = 0.00;
+                s.Coordinate.YCoordinate = 0.00;
+            }
+
             System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate + "," + s.Coordinate.YCoordinate);
+        }
+
+        public void ShowForm()
+        {
+            this.Show();
         }
     }
 }
