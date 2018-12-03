@@ -35,12 +35,14 @@ namespace TransportApp
             {
                 this.lsbFrom.Items.Clear();
                 this.lsbFrom.Enabled = true;
+                this.lsbFrom.Visible = true;
             }
 
             if (TextBoxName == "txbTo")
             {
                 this.lsbTo.Items.Clear();
                 this.lsbTo.Enabled = true;
+                this.lsbTo.Visible = true;
             }
 
             SwissTransport.Transport Station = new Transport();
@@ -70,7 +72,7 @@ namespace TransportApp
             SwissTransport.Transport TempConnectionVar = new Transport();   
             List<SwissTransport.Connection> TempConnectionsList = new List<SwissTransport.Connection>();//List für Temporäre Connection in ListBox
 
-            TempConnectionsList = TempConnectionVar.GetConnections(this.txbFrom.Text, this.txbTo.Text).ConnectionList;
+            TempConnectionsList = TempConnectionVar.GetConnections(this.txbFrom.Text, this.txbTo.Text, this.dtpDepature.Value).ConnectionList;
 
             foreach (Connection t in TempConnectionsList)
             {
@@ -88,10 +90,12 @@ namespace TransportApp
             this.lsbFrom.Items.Clear();
             this.lsbFrom.Size = this.lsbFrom.MinimumSize;
             this.lsbFrom.Enabled = false;
+            this.lsbFrom.Visible = false;
             
             this.lsbTo.Items.Clear();
             this.lsbTo.Enabled = false;
             this.lsbTo.Size = this.lsbFrom.MinimumSize;
+            this.lsbTo.Visible = false;
         }
 
         private void SelectItemOutOfListBoxFrom(object sender, EventArgs e)
