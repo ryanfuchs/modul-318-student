@@ -25,6 +25,12 @@ namespace TransportApp
             this.txbFrom.Focus();
         }
 
+        string YFromCordinates;
+        string XFromCordinates;
+
+        string YToCordinates;
+        string XToCordinates;
+
         private void SearchStation(object sender, EventArgs e)
         {
             var SenderTextBox = sender as TextBox;
@@ -110,6 +116,8 @@ namespace TransportApp
         private void SelectItemOutOfListBoxFrom(object sender, EventArgs e)
         {
             this.txbFrom.Text = Convert.ToString(this.lsbFrom.SelectedItem);
+            
+            this.XFromCordinates = Convert.ToString(this.lsbFrom.SelectedItem);
 
             this.LeaveFocus();
         }
@@ -137,6 +145,30 @@ namespace TransportApp
                 Forms.OpenSearchDeparturesForm();               
             }
 
+        }
+
+        private void LocationClickFrom(object sender, EventArgs e)//Location wird auf Google maps Angezeigt
+        {
+            SwissTransport.Transport Station = new Transport();
+            List<SwissTransport.Station> TempStation = new List<SwissTransport.Station>();//List für Temporäre Stationen in ComboBox From
+
+            TempStation = Station.GetStations(this.txbFrom.Text).StationList;
+
+            Station s = TempStation.First();
+
+            System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate + "," + s.Coordinate.YCoordinate);
+        }
+
+        private void LocationClickTo(object sender, EventArgs e)//Location wird auf Google maps Angezeigt
+        {
+            SwissTransport.Transport Station = new Transport();
+            List<SwissTransport.Station> TempStation = new List<SwissTransport.Station>();//List für Temporäre Stationen in ComboBox From
+
+            TempStation = Station.GetStations(this.txbTo.Text).StationList;
+
+            Station s = TempStation.First();
+
+            System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate + "," + s.Coordinate.YCoordinate);
         }
     }
 }

@@ -16,5 +16,10 @@ namespace TransportApp
         {
             InitializeComponent();
         }
+
+        private void CurrentLocationMapClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }
