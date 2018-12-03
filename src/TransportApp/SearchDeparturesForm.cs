@@ -61,6 +61,8 @@ namespace TransportApp
             string TextBoxInput = SenderTextBox.Text;
             string TextBoxName = SenderTextBox.Name;
 
+            Station TempStationObject;
+
             if (TextBoxName == "txbStationName")
             {
                 this.lsbStationName.Items.Clear();
@@ -76,13 +78,27 @@ namespace TransportApp
             }
 
             SwissTransport.Transport Station = new Transport();
-            List<SwissTransport.Station> TempStation = new List<SwissTransport.Station>();//List für Temporäre Stationen in ComboBox From
+            List<SwissTransport.Station> TempStation = new List<SwissTransport.Station>();//List für Temporäre Stationen in ListBox From
 
             TempStation = Station.GetStations(TextBoxInput).StationList;
 
+            if (TextBoxName == "txbCurrentLocation")
+            {
+                if (TempStation != null || this.txbCurrentLocation.Text != null && this.txbStationName.Text != null)
+                {
+                    TempStationObject = TempStation.First();
+
+                    SwissTransport.Transport StationLocation = new Transport();
+                    List<SwissTransport.Station>TempStationLocation = new List<SwissTransport.Station>(); //List für Temporäre Stationen in ListBox From
+
+                    TempStation = Station.GetStationsCordinates(TempStationObject).StationList;
+                }
+
+            }
+
             foreach (Station t in TempStation)
             {
-                if (t.Name != null)//Abfangen von stationen die Keinen Namen haben
+                if (t.Name != null) //Abfangen von stationen die Keinen Namen haben
                 {
                     if (TextBoxName == "txbStationName")
                     {
@@ -95,12 +111,79 @@ namespace TransportApp
                     }
                 }
             }
+            
         }
 
         private void btnConnectionsForm_Click(object sender, EventArgs e)
         {
-
             this.Close();
+        }
+
+        private void SearchDepartures(object sender, EventArgs e)
+        {
+            SwissTransport.Transport TempStationBoardVar = new Transport();
+            List<SwissTransport.StationBoard> TempStationBoardList = new List<SwissTransport.StationBoard>();//List für Temporäre Connection in ListBox
+
+            string StationName;
+
+            if (this.rdbCurrentLocation.Checked == true)
+            {
+                SwissTransport.Transport Station = new Transport();
+                List<SwissTransport.Station> TempStation = new List<SwissTransport.Station>();//List für Temporäre Stationen in ListBox From
+
+                TempStation = Station.GetStations(this.txbCurrentLocation.Text).StationList;
+
+                Station TempStationObject = TempStation.First();
+                
+
+                TempStationBoardList = TempStationBoardVar.GetStationBoard(TempStationObject.Id).Entries;
+                StationName = this.txbCurrentLocation.Text;
+            }
+            else
+            {
+                SwissTransport.Transport Station = new Transport();
+                List<SwissTransport.Station> TempStation = new List<SwissTransport.Station>();//List für Temporäre Stationen in ListBox From
+
+                TempStation = Station.GetStations(this.txbStationName.Text).StationList;
+
+                Station TempStationObject = TempStation.First();
+
+                TempStationBoardList = TempStationBoardVar.GetStationBoard(TempStationObject.Id).Entries;
+                StationName = this.txbStationName.Text;
+            }
+            foreach (StationBoard t in TempStationBoardList)
+            {
+                string Departure = Convert.ToString(t.Stop.Departure);
+                string Line = t.Category;
+                string To = t.To;
+
+                this.dgvDepatures.Rows.Add(StationName, Departure, Line, To);
+            }
+        }
+
+        public void LeaveFocus()
+        {
+            this.lsbCurrentLocation.Items.Clear();
+            this.lsbCurrentLocation.Size = this.lsbCurrentLocation.MinimumSize;
+            this.lsbCurrentLocation.Enabled = false;
+            this.lsbCurrentLocation.Visible = false;
+
+            this.lsbStationName.Items.Clear();
+            this.lsbStationName.Enabled = false;
+            this.lsbStationName.Size = this.lsbStationName.MinimumSize;
+            this.lsbStationName.Visible = false;
+        }
+
+        private void SelectItemOutOfListBoxStationName(object sender, EventArgs e)
+        {
+            this.txbStationName.Text = this.lsbStationName.SelectedItem.ToString();
+
+            this.LeaveFocus();
+        }
+
+        private void SelectItemOutOfListBoxCurrentLocation(object sender, EventArgs e)
+        {
+            this.txbCurrentLocation.Text = this.lsbCurrentLocation.SelectedItem.ToString();
         }
     }
 }

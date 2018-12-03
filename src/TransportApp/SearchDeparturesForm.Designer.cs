@@ -43,7 +43,6 @@
             this.ColumnTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lsbStationName = new System.Windows.Forms.ListBox();
             this.txbCurrentLocation = new System.Windows.Forms.TextBox();
-            this.btnConnectionsForm = new System.Windows.Forms.Button();
             this.btnDeparturesForm = new System.Windows.Forms.Button();
             this.rdbCurrentLocation = new System.Windows.Forms.RadioButton();
             this.txbStationName = new System.Windows.Forms.TextBox();
@@ -51,6 +50,7 @@
             this.pbxLocation1 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lsbCurrentLocation = new System.Windows.Forms.ListBox();
+            this.btnConnectionsForm = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepatures)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLocation1)).BeginInit();
@@ -165,6 +165,7 @@
             this.btnSearch.TabIndex = 8;
             this.btnSearch.Text = "Search Departures";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.SearchDepartures);
             // 
             // lblLocation
             // 
@@ -235,6 +236,7 @@
             this.lsbStationName.Size = new System.Drawing.Size(343, 17);
             this.lsbStationName.TabIndex = 5;
             this.lsbStationName.Visible = false;
+            this.lsbStationName.SelectedIndexChanged += new System.EventHandler(this.SelectItemOutOfListBoxStationName);
             // 
             // txbCurrentLocation
             // 
@@ -247,20 +249,6 @@
             this.txbCurrentLocation.Size = new System.Drawing.Size(343, 20);
             this.txbCurrentLocation.TabIndex = 6;
             this.txbCurrentLocation.TextChanged += new System.EventHandler(this.SearchStation);
-            // 
-            // btnConnectionsForm
-            // 
-            this.btnConnectionsForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.btnConnectionsForm, 4);
-            this.btnConnectionsForm.Location = new System.Drawing.Point(3, 3);
-            this.btnConnectionsForm.Name = "btnConnectionsForm";
-            this.btnConnectionsForm.Size = new System.Drawing.Size(462, 24);
-            this.btnConnectionsForm.TabIndex = 1;
-            this.btnConnectionsForm.Text = "Connections";
-            this.btnConnectionsForm.UseVisualStyleBackColor = true;
-            this.btnConnectionsForm.Click += new System.EventHandler(this.btnConnectionsForm_Click);
             // 
             // btnDeparturesForm
             // 
@@ -357,6 +345,20 @@
             this.lsbCurrentLocation.Size = new System.Drawing.Size(343, 17);
             this.lsbCurrentLocation.TabIndex = 22;
             this.lsbCurrentLocation.Visible = false;
+            this.lsbCurrentLocation.SelectedIndexChanged += new System.EventHandler(this.SelectItemOutOfListBoxCurrentLocation);
+            // 
+            // btnConnectionsForm
+            // 
+            this.btnConnectionsForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.SetColumnSpan(this.btnConnectionsForm, 4);
+            this.btnConnectionsForm.Location = new System.Drawing.Point(3, 3);
+            this.btnConnectionsForm.Name = "btnConnectionsForm";
+            this.btnConnectionsForm.Size = new System.Drawing.Size(462, 24);
+            this.btnConnectionsForm.TabIndex = 1;
+            this.btnConnectionsForm.Text = "Connections";
+            this.btnConnectionsForm.UseVisualStyleBackColor = true;
             // 
             // SearchDeparturesForm
             // 
