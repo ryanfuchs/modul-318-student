@@ -22,6 +22,7 @@ namespace TransportApp
             InitializeComponent();
             this.lsbFrom.AutoSize = true;
             this.lsbTo.AutoSize = true;
+            this.dtpDepartureDate.CustomFormat = "MM/dd/yyyy hh:mm:ss";
         }
 
         private void SearchStation(object sender, EventArgs e)
@@ -72,8 +73,16 @@ namespace TransportApp
             SwissTransport.Transport TempConnectionVar = new Transport();   
             List<SwissTransport.Connection> TempConnectionsList = new List<SwissTransport.Connection>();//List für Temporäre Connection in ListBox
 
-            TempConnectionsList = TempConnectionVar.GetConnections(this.txbFrom.Text, this.txbTo.Text, this.dtpDepature.Value).ConnectionList;
-
+            if (this.rdbDateTime.Checked == true)
+            {
+                TempConnectionsList = TempConnectionVar.GetConnections(this.txbFrom.Text, this.txbTo.Text,
+                    this.dtpDepartureTime.Value, this.dtpDepartureDate.Value).ConnectionList;
+            }
+            else
+            {
+                TempConnectionsList = TempConnectionVar.GetConnections(this.txbFrom.Text, this.txbTo.Text,
+                    DateTime.Now, DateTime.Now).ConnectionList;
+            }
             foreach (Connection t in TempConnectionsList)
             {
                 string DepartureTime = t.From.Departure.Substring(11, 5);
