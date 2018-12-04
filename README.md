@@ -1,6 +1,5 @@
-# modul-318-Student
+Wellcome!
 
-Students!
-Fork this repository to your own Github account. Work there with this repository. The intructor will clone your repo for inspection and evaluation.
+Pleas Read at first the Dokumentation.docx File at \Projekt\Dokumentation.
 
-Have Fun!
+Have fun!
