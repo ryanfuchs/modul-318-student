@@ -184,7 +184,7 @@ namespace TransportApp
                 MailMessage.From = new MailAddress("info@transportgate.ch");
                 MailMessage.IsBodyHtml = true;
 
-                var NewLine = "%0D%0A"; //UniCode
+                const string NewLine = "%0D%0A"; //UniCode
                 MailMessage.Body = "Connections:" + NewLine + NewLine;
                 MailMessage.Body += "Form:" + this.txbFrom.Text + ", " + "To:" + this.txbTo.Text + NewLine + NewLine;
 
