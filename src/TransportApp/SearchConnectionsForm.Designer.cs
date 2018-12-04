@@ -141,7 +141,7 @@
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(340, 24);
             this.btnSearch.TabIndex = 8;
-            this.btnSearch.Text = "Search Connectons";
+            this.btnSearch.Text = "Search Connections";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.SearchConnections);
             // 

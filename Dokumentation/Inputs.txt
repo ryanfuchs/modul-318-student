@@ -1,0 +1,7 @@
+Api 10Ergebnisse Return Ok da Wenn in Ebikon Wichtigste Ergebnisse, Spez. Region anfang der haltestellen.
+Gewisse keine PlatForm => No Information da sonst Leer
+Zwei date Time Picker da sonst kompliziert
+Explorativ Testen
+Exterene Maschine Testen
+LS AutoSize kein Textproperty
+Wenn Departures/Station geschlossen wird nicht alles schliessen da noch verbindungen gesucht wird

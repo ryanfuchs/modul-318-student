@@ -1,27 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Net.Mail;
-using System.Runtime.CompilerServices;
-using System.Runtime.Remoting.Lifetime;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
-using Fsolutions.Fbase.Common.Mail;
 using SwissTransport;
 
 namespace TransportApp
 {
     public partial class SearchConnectionsForm : Form
     {
-        public SearchConnectionsForm()
+        public SearchConnectionsForm()//Aufruf beim öffnen der Form
         {
             InitializeComponent();
             this.lsbFrom.AutoSize = true;
@@ -29,7 +18,7 @@ namespace TransportApp
             this.txbFrom.Focus();
         }
 
-        private void SearchStation(object sender, EventArgs e)
+        private void SearchStation(object sender, EventArgs e)//Methode für das Suchen einer Station
         {
             var SenderTextBox = sender as TextBox;
 
@@ -74,7 +63,7 @@ namespace TransportApp
             this.dgvDepatures.Rows.Clear();
         }
 
-        private void SearchConnections(object sender, EventArgs e)
+        private void SearchConnections(object sender, EventArgs e)//Methode für das Suchen der Verbindungen
         {
             SwissTransport.Transport TempConnectionVar = new Transport();
             List<SwissTransport.Connection> TempConnectionsList = new List<SwissTransport.Connection>();//List für Temporäre Connection in ListBox
@@ -110,7 +99,7 @@ namespace TransportApp
             }
         }
 
-        public void LeaveFocus()
+        public void LeaveFocus()//Listboxen werden geschlossen aufruf in Methode
         {
             this.lsbFrom.Items.Clear();
             this.lsbFrom.Size = this.lsbFrom.MinimumSize;
@@ -123,14 +112,14 @@ namespace TransportApp
             this.lsbTo.Visible = false;
         }
 
-        private void SelectItemOutOfListBoxFrom(object sender, EventArgs e)
+        private void SelectItemOutOfListBoxFrom(object sender, EventArgs e)//Item aus lsb wird in txb gemoved
         {
             this.txbFrom.Text = Convert.ToString(this.lsbFrom.SelectedItem);
 
             this.LeaveFocus();
         }
 
-        private void SelectItemOutOfListBoxTo(object sender, EventArgs e)
+        private void SelectItemOutOfListBoxTo(object sender, EventArgs e)//Item aus lsb wird in txb gemoved
         {
             this.txbTo.Text = Convert.ToString(this.lsbTo.SelectedItem);
 
@@ -167,7 +156,7 @@ namespace TransportApp
             else
             {
                 s = TempStation.First();
-                System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate + "," + s.Coordinate.YCoordinate);
+                System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate.ToString().Replace(",", ".") + "," + s.Coordinate.YCoordinate)?.ToString().Replace(",", ".");
             }
         }
 
@@ -191,12 +180,12 @@ namespace TransportApp
             }
         }
 
-        public void ShowForm()
+        public void ShowForm()//Methode zu Anzeigen der Connections Form
         {
             this.Show();
         }
 
-        private void SendMail(object sender, EventArgs e)
+        private void SendMail(object sender, EventArgs e)//Methode für das Versenden eines Mails
         {
             var mailMessage = new MailMessage();
             {
@@ -220,7 +209,7 @@ namespace TransportApp
             }
         }
 
-        private void LeaveFocus(object sender, EventArgs e)
+        private void LeaveFocus(object sender, EventArgs e)//Listboxen werden geschlossen aufruff durch Event
         {
             this.lsbFrom.Items.Clear();
             this.lsbFrom.Size = this.lsbFrom.MinimumSize;

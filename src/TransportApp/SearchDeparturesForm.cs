@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SwissTransport;
 
@@ -22,15 +17,15 @@ namespace TransportApp
             this.lsbStationName.AutoSize = true;
         }
 
-        private void OtherForm(object sender, EventArgs e)
-        {
-            var SenderButton = sender as Button;
+        //private void OtherForm(object sender, EventArgs e)
+        //{
+        //    var SenderButton = sender as Button;
 
-            if (SenderButton.Name == this.btnConnectionsForm.Name)
-            {
-                this.Close();
-            }
-        }
+        //    if (SenderButton.Name == this.btnConnectionsForm.Name)
+        //    {
+        //        this.Close();
+        //    }
+        //}
 
         private void CurrentLocationMapClick(object sender, EventArgs e)//Location wird auf Googel-Maps angezeigt
         {
@@ -39,40 +34,35 @@ namespace TransportApp
 
             TempStation = Station.GetStations(this.txbCurrentLocation.Text).StationList;
 
-            Station s;
-
             if (TempStation.Count == 0 || TempStation.First().Coordinate.XCoordinate == null)
             {
                 MessageBox.Show("No Coordinates avivable!");
             }
             else
             {
-                s = TempStation.First();
+                Station s = TempStation.First();
                 System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate + "," + s.Coordinate.YCoordinate);
             }
         }
 
-        private void StationNameMapClick(object sender, EventArgs e)
+        private void StationNameMapClick(object sender, EventArgs e)//Station der From TextBox wird in GoogleMaps angezeigt
         {
             SwissTransport.Transport Station = new Transport();
             List<SwissTransport.Station> TempStation = new List<SwissTransport.Station>();//List für Temporäre Stationen in ComboBox From
 
             TempStation = Station.GetStations(this.txbStationName.Text).StationList;
-
-            Station s;
-
             if (TempStation.Count == 0 || TempStation.First().Coordinate.XCoordinate == null)
             {
                 MessageBox.Show("No Coordinates avivable!");
             }
             else
             {
-                s = TempStation.First();
-                System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate + "," + s.Coordinate.YCoordinate);
+                Station s = TempStation.First();
+                System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate.ToString().Replace(",", ".") + "," + s.Coordinate.YCoordinate).ToString().Replace(",", ".");
             }
         }
 
-        private void SearchStation(object sender, EventArgs e)
+        private void SearchStation(object sender, EventArgs e)//Für die Suche von Stationen
         {
             this.dgvDepatures.Rows.Clear();
 
@@ -104,7 +94,7 @@ namespace TransportApp
 
             if (TextBoxName == "txbCurrentLocation")
             {
-                if (TempStation.Count != 0 || this.txbCurrentLocation.Text != "")
+                if (TempStation.Count != 0 && this.txbCurrentLocation.Text != "")
                 {
 
                     TempStationObject = TempStation.First();
@@ -120,11 +110,6 @@ namespace TransportApp
                 }
                 
 
-            }
-
-            if (this.txbStationName.Text == "")
-            {
-                this.LeaveFocus();
             }
 
             foreach (Station t in TempStation)
@@ -147,12 +132,7 @@ namespace TransportApp
             
         }
 
-        //private void btnConnectionsForm_Click(object sender, EventArgs e)
-        //{
-        //    this.Close();
-        //}
-
-        private void SearchDepartures(object sender, EventArgs e)
+        private void SearchDepartures(object sender, EventArgs e)//Abfahrten ab einer Bestimmtem Station werden gesucht und angezeigt
         {
             SwissTransport.Transport TempStationBoardVar = new Transport();
             List<SwissTransport.StationBoard> TempStationBoardList = new List<SwissTransport.StationBoard>();//List für Temporäre Connection in ListBox
@@ -162,6 +142,7 @@ namespace TransportApp
             string StationName;
             Station TempStationObject = new Station();
 
+
             if (this.rdbCurrentLocation.Checked == true)
             {
                 SwissTransport.Transport Station = new Transport();
@@ -169,7 +150,16 @@ namespace TransportApp
 
                 TempStation = Station.GetStations(this.txbCurrentLocation.Text).StationList;
 
-                TempStationObject = TempStation.First();
+                if (this.txbCurrentLocation.Text == "" || TempStation == null)
+                {
+                    MessageBox.Show("Pleas enter your current location.");
+                }
+                else
+                {
+                    TempStationObject = TempStation.First();
+                }
+
+                StationName = this.txbCurrentLocation.Text;
             }
             else
             {
@@ -182,10 +172,14 @@ namespace TransportApp
                 {
                     TempStationObject = TempStation.First();
                 }
-            }
+                else
+                {
+                    MessageBox.Show("Pleas enter a correct stationname.");
+                }
 
+                StationName = this.txbStationName.Text;
+            }
             TempStationBoardList = TempStationBoardVar.GetStationBoard(TempStationObject.Id).Entries;
-            StationName = this.txbCurrentLocation.Text;
 
 
             foreach (StationBoard t in TempStationBoardList)
@@ -200,7 +194,7 @@ namespace TransportApp
             this.LeaveFocus();
         }
 
-        public void LeaveFocus()
+        public void LeaveFocus() //Listboxen werden geschlossen durch Methodenaufruf
         {
             this.lsbCurrentLocation.Items.Clear();
             this.lsbCurrentLocation.Size = this.lsbCurrentLocation.MinimumSize;
@@ -213,19 +207,19 @@ namespace TransportApp
             this.lsbStationName.Visible = false;
         }
 
-        private void SelectItemOutOfListBoxStationName(object sender, EventArgs e)
+        private void SelectItemOutOfListBoxStationName(object sender, EventArgs e)//Item wird von lsb in txb gemoved
         {
             this.txbStationName.Text = this.lsbStationName.SelectedItem.ToString();
 
             this.LeaveFocus();
         }
 
-        private void SelectItemOutOfListBoxCurrentLocation(object sender, EventArgs e)
+        private void SelectItemOutOfListBoxCurrentLocation(object sender, EventArgs e)//Item wird von lsb in txb gemoved
         {
             this.txbCurrentLocation.Text = this.lsbCurrentLocation.SelectedItem.ToString();
         }
 
-        private void SendMail(object sender, EventArgs e)
+        private void SendMail(object sender, EventArgs e)//Methode für das versenden eines Mails
         {
             var mailMessage = new MailMessage();
             {
@@ -248,12 +242,12 @@ namespace TransportApp
             }
         }
 
-        private void OpenConnectionsForm(object sender, EventArgs e)
+        private void OpenConnectionsForm(object sender, EventArgs e)//Öffnen der Connections Form
         {
             this.Close();
         }
 
-        private void LeaveFocus(object sender, EventArgs e)
+        private void LeaveFocus(object sender, EventArgs e)//Listboxen werden geschlossen durch Eventaufruf
         {
             this.lsbCurrentLocation.Items.Clear();
             this.lsbCurrentLocation.Size = this.lsbCurrentLocation.MinimumSize;
