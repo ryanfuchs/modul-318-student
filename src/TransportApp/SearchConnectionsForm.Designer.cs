@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchConnectionsForm));
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
             this.lblFrom = new System.Windows.Forms.Label();
             this.lblTo = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -52,59 +52,59 @@
             this.btnConnectionsForm = new System.Windows.Forms.Button();
             this.pbxLocation2 = new System.Windows.Forms.PictureBox();
             this.pbxLocation1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.pbxMail = new System.Windows.Forms.PictureBox();
+            this.tlpForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepatures)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLocation2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLocation1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxMail)).BeginInit();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // tlpForm
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tlpForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 6;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.05586F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.27928F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.62138F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.04348F));
-            this.tableLayoutPanel1.Controls.Add(this.lblFrom, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.lblTo, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.btnSearch, 2, 7);
-            this.tableLayoutPanel1.Controls.Add(this.lblDepature, 4, 2);
-            this.tableLayoutPanel1.Controls.Add(this.dgvDepatures, 2, 8);
-            this.tableLayoutPanel1.Controls.Add(this.lsbFrom, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.txbFrom, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.lsbTo, 2, 6);
-            this.tableLayoutPanel1.Controls.Add(this.txbTo, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.btnDeparturesForm, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.rdbNow, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.lblNow, 4, 3);
-            this.tableLayoutPanel1.Controls.Add(this.rdbDateTime, 3, 5);
-            this.tableLayoutPanel1.Controls.Add(this.dtpDepartureDate, 4, 5);
-            this.tableLayoutPanel1.Controls.Add(this.dtpDepartureTime, 5, 5);
-            this.tableLayoutPanel1.Controls.Add(this.btnConnectionsForm, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pbxLocation2, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.pbxLocation1, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 3, 7);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 9;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(682, 473);
-            this.tableLayoutPanel1.TabIndex = 7;
+            this.tlpForm.ColumnCount = 6;
+            this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.05586F));
+            this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.27928F));
+            this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.62138F));
+            this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.04348F));
+            this.tlpForm.Controls.Add(this.lblFrom, 1, 3);
+            this.tlpForm.Controls.Add(this.lblTo, 1, 5);
+            this.tlpForm.Controls.Add(this.btnSearch, 2, 7);
+            this.tlpForm.Controls.Add(this.lblDepature, 4, 2);
+            this.tlpForm.Controls.Add(this.dgvDepatures, 2, 8);
+            this.tlpForm.Controls.Add(this.lsbFrom, 2, 4);
+            this.tlpForm.Controls.Add(this.txbFrom, 2, 3);
+            this.tlpForm.Controls.Add(this.lsbTo, 2, 6);
+            this.tlpForm.Controls.Add(this.txbTo, 2, 5);
+            this.tlpForm.Controls.Add(this.btnDeparturesForm, 4, 0);
+            this.tlpForm.Controls.Add(this.rdbNow, 3, 3);
+            this.tlpForm.Controls.Add(this.lblNow, 4, 3);
+            this.tlpForm.Controls.Add(this.rdbDateTime, 3, 5);
+            this.tlpForm.Controls.Add(this.dtpDepartureDate, 4, 5);
+            this.tlpForm.Controls.Add(this.dtpDepartureTime, 5, 5);
+            this.tlpForm.Controls.Add(this.btnConnectionsForm, 0, 0);
+            this.tlpForm.Controls.Add(this.pbxLocation2, 0, 5);
+            this.tlpForm.Controls.Add(this.pbxLocation1, 0, 3);
+            this.tlpForm.Controls.Add(this.pbxMail, 3, 7);
+            this.tlpForm.Location = new System.Drawing.Point(12, 12);
+            this.tlpForm.Name = "tlpForm";
+            this.tlpForm.RowCount = 9;
+            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpForm.Size = new System.Drawing.Size(682, 473);
+            this.tlpForm.TabIndex = 7;
             // 
             // lblFrom
             // 
@@ -155,7 +155,7 @@
             this.lblDepature.Name = "lblDepature";
             this.lblDepature.Size = new System.Drawing.Size(123, 30);
             this.lblDepature.TabIndex = 15;
-            this.lblDepature.Text = "Departure";
+            this.lblDepature.Text = "Departure:";
             this.lblDepature.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dgvDepatures
@@ -170,7 +170,7 @@
             this.ColumnDeparture,
             this.ColumnArrival,
             this.ColumnDuration});
-            this.tableLayoutPanel1.SetColumnSpan(this.dgvDepatures, 3);
+            this.tlpForm.SetColumnSpan(this.dgvDepatures, 3);
             this.dgvDepatures.Location = new System.Drawing.Point(107, 214);
             this.dgvDepatures.Name = "dgvDepatures";
             this.dgvDepatures.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
@@ -259,7 +259,7 @@
             this.btnDeparturesForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.btnDeparturesForm, 2);
+            this.tlpForm.SetColumnSpan(this.btnDeparturesForm, 2);
             this.btnDeparturesForm.Location = new System.Drawing.Point(473, 3);
             this.btnDeparturesForm.Name = "btnDeparturesForm";
             this.btnDeparturesForm.Size = new System.Drawing.Size(206, 24);
@@ -332,13 +332,14 @@
             this.btnConnectionsForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.btnConnectionsForm, 4);
+            this.btnConnectionsForm.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.tlpForm.SetColumnSpan(this.btnConnectionsForm, 4);
             this.btnConnectionsForm.Location = new System.Drawing.Point(3, 3);
             this.btnConnectionsForm.Name = "btnConnectionsForm";
             this.btnConnectionsForm.Size = new System.Drawing.Size(464, 24);
             this.btnConnectionsForm.TabIndex = 2;
             this.btnConnectionsForm.Text = "Connections";
-            this.btnConnectionsForm.UseVisualStyleBackColor = true;
+            this.btnConnectionsForm.UseVisualStyleBackColor = false;
             this.btnConnectionsForm.Click += new System.EventHandler(this.OtherForm);
             // 
             // pbxLocation2
@@ -373,40 +374,41 @@
             this.pbxLocation1.TabStop = false;
             this.pbxLocation1.Click += new System.EventHandler(this.LocationClickFrom);
             // 
-            // pictureBox1
+            // pbxMail
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(453, 184);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(14, 24);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 20;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.SendMail);
+            this.pbxMail.Image = ((System.Drawing.Image)(resources.GetObject("pbxMail.Image")));
+            this.pbxMail.Location = new System.Drawing.Point(453, 184);
+            this.pbxMail.Name = "pbxMail";
+            this.pbxMail.Size = new System.Drawing.Size(14, 24);
+            this.pbxMail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxMail.TabIndex = 20;
+            this.pbxMail.TabStop = false;
+            this.pbxMail.Click += new System.EventHandler(this.SendMail);
             // 
             // SearchConnectionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(706, 497);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.tlpForm);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(722, 536);
             this.Name = "SearchConnectionsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connections";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.tlpForm.ResumeLayout(false);
+            this.tlpForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepatures)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLocation2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLocation1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxMail)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tlpForm;
         private System.Windows.Forms.Button btnDeparturesForm;
         private System.Windows.Forms.Button btnConnectionsForm;
         private System.Windows.Forms.Label lblFrom;
@@ -429,6 +431,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDuration;
         private System.Windows.Forms.PictureBox pbxLocation2;
         private System.Windows.Forms.PictureBox pbxLocation1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbxMail;
     }
 }

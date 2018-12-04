@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -130,6 +132,7 @@ namespace TransportApp
             List<SwissTransport.StationBoard> TempStationBoardList = new List<SwissTransport.StationBoard>();//List für Temporäre Connection in ListBox
 
             string StationName;
+            Station TempStationObject = new Station();
 
             if (this.rdbCurrentLocation.Checked == true)
             {
@@ -138,11 +141,7 @@ namespace TransportApp
 
                 TempStation = Station.GetStations(this.txbCurrentLocation.Text).StationList;
 
-                Station TempStationObject = TempStation.First();
-                
-
-                TempStationBoardList = TempStationBoardVar.GetStationBoard(TempStationObject.Id).Entries;
-                StationName = this.txbCurrentLocation.Text;
+                TempStationObject = TempStation.First();
             }
             else
             {
@@ -151,11 +150,15 @@ namespace TransportApp
 
                 TempStation = Station.GetStations(this.txbStationName.Text).StationList;
 
-                Station TempStationObject = TempStation.First();
-
-                TempStationBoardList = TempStationBoardVar.GetStationBoard(TempStationObject.Id).Entries;
-                StationName = this.txbStationName.Text;
+                if (TempStation.Count != 0)
+                {
+                    TempStationObject = TempStation.First();
+                }
             }
+
+            TempStationBoardList = TempStationBoardVar.GetStationBoard(TempStationObject.Id).Entries;
+            StationName = this.txbCurrentLocation.Text;
+
 
             foreach (StationBoard t in TempStationBoardList)
             {
@@ -190,6 +193,34 @@ namespace TransportApp
         private void SelectItemOutOfListBoxCurrentLocation(object sender, EventArgs e)
         {
             this.txbCurrentLocation.Text = this.lsbCurrentLocation.SelectedItem.ToString();
+        }
+
+        private void SendMail(object sender, EventArgs e)
+        {
+            var mailMessage = new MailMessage();
+            {
+                mailMessage.Subject = "Connections";
+                mailMessage.From = new MailAddress("info@transportgate.ch");
+                mailMessage.IsBodyHtml = true;
+
+                var NewLine = "%0D%0A"; //UniCode
+                mailMessage.Body = "Connections:" + NewLine + NewLine;
+                mailMessage.Body += "Form:" + this.dgvDepatures.Rows[1].Cells[0].Value + NewLine + NewLine;
+
+                for (int i = 0; i < this.dgvDepatures.RowCount - 1; i++)
+                {
+                    mailMessage.Body += "Departure: " + this.dgvDepatures.Rows[i].Cells[1].Value + NewLine +
+                                        "Line: " + this.dgvDepatures.Rows[i].Cells[2].Value + NewLine +
+                                        "To: " + this.dgvDepatures.Rows[i].Cells[3].Value + NewLine + NewLine;
+                }
+
+                Process.Start(@"mailto:?subject=" + mailMessage.Subject + "&body=" + mailMessage.Body);
+            }
+        }
+
+        private void OpenConnectionsForm(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

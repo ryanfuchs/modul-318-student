@@ -146,9 +146,17 @@ namespace TransportApp
 
             TempStation = Station.GetStations(this.txbFrom.Text).StationList;
 
-            Station s = TempStation.First();
+            Station s;
 
-            System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate + "," + s.Coordinate.YCoordinate);
+            if (TempStation.Count == 0 || TempStation.First().Coordinate.XCoordinate == null)
+            {
+                MessageBox.Show("No Coordinates avivable!");
+            }
+            else
+            {
+                s = TempStation.First();
+                System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate + "," + s.Coordinate.YCoordinate);
+            }
         }
 
         private void LocationClickTo(object sender, EventArgs e)//Location wird auf Google maps Angezeigt
@@ -158,15 +166,17 @@ namespace TransportApp
 
             TempStation = Station.GetStations(this.txbTo.Text).StationList;
 
-            Station s = TempStation.First();
+            Station s;
 
-            if (s.Coordinate.YCoordinate == null || s.Coordinate.XCoordinate == null)
+            if (TempStation.Count == 0 || TempStation.First().Coordinate.XCoordinate == null)
             {
-                s.Coordinate.XCoordinate = 0.00;
-                s.Coordinate.YCoordinate = 0.00;
+                MessageBox.Show("No Coordinates avivable!");
             }
-
-            System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate + "," + s.Coordinate.YCoordinate);
+            else
+            {
+                s = TempStation.First();
+                System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate + "," + s.Coordinate.YCoordinate);
+            }
         }
 
         public void ShowForm()
@@ -176,34 +186,6 @@ namespace TransportApp
 
         private void SendMail(object sender, EventArgs e)
         {
-            //int Rows = 1;
-            //int Cells = 0;
-
-            //var MailStringBuilder = new StringBuilder();
-            //MailStringBuilder.AppendLine("Connections");
-            //MailStringBuilder.AppendLine($"From:{this.txbFrom.Text} To:{this.txbTo.Text}");
-            //MailStringBuilder.Append("<tabel border='1' style='border-collapse:collapse' cellpadding='8'>");
-            //MailStringBuilder.Append(
-            //    "<tr><th>Platform</th><th>Departure</th><th>Arrival</th><th>Duration</th></tr>");
-            //for(int i = 0; i <= this.dgvDepatures.RowCount; i++)
-            //{
-            //    MailStringBuilder.Append("<tr>");
-            //    MailStringBuilder.Append($"<td>{this.dgvDepatures.Rows[Rows].Cells[Cells].Value}</td>");
-            //    Cells++;
-            //    MailStringBuilder.Append($"<td>{this.dgvDepatures.Rows[Rows].Cells[Cells].Value}</td>");
-            //    Cells++;
-            //    MailStringBuilder.Append($"<td>{this.dgvDepatures.Rows[Rows].Cells[Cells].Value}</td>");
-            //    Cells++;
-            //    MailStringBuilder.Append($"<td>{this.dgvDepatures.Rows[Rows].Cells[Cells].Value}</td>");
-            //    MailStringBuilder.Append("</tr>");
-            //    Cells = 0;
-            //    Rows++;
-            //}
-
-            //MailStringBuilder.Append("</table>");
-
-
-
             var mailMessage = new MailMessage();
             {
                 mailMessage.Subject = "Connections";
@@ -211,12 +193,16 @@ namespace TransportApp
                 mailMessage.IsBodyHtml = true;
 
                 var NewLine = "%0D%0A"; //UniCode
-                mailMessage.Body = "Connection:" + NewLine;
-                mailMessage.Body += "Form:" + this.txbFrom.Text + ", " + "To:" + this.txbTo.Text + NewLine +
-                    "Platform: " + this.dgvDepatures.Rows[1].Cells[0].Value + NewLine +
-                    "Departure: " + this.dgvDepatures.Rows[1].Cells[1].Value + NewLine +
-                    "Arrival: " + this.dgvDepatures.Rows[1].Cells[2].Value + NewLine +
-                    "Duration: " + this.dgvDepatures.Rows[1].Cells[3].Value;
+                mailMessage.Body = "Connections:" + NewLine + NewLine;
+                mailMessage.Body += "Form:" + this.txbFrom.Text + ", " + "To:" + this.txbTo.Text + NewLine + NewLine;
+
+                for (int i = 0; i < this.dgvDepatures.RowCount - 1; i++)
+                {
+                    mailMessage.Body += "Platform: " + this.dgvDepatures.Rows[i].Cells[0].Value + NewLine +
+                                        "Departure: " + this.dgvDepatures.Rows[i].Cells[1].Value + NewLine +
+                                        "Arrival: " + this.dgvDepatures.Rows[i].Cells[2].Value + NewLine +
+                                        "Duration: " + this.dgvDepatures.Rows[i].Cells[3].Value + NewLine + NewLine;
+                }
 
                 Process.Start(@"mailto:?subject=" + mailMessage.Subject + "&body=" + mailMessage.Body);
             }
