@@ -46,17 +46,15 @@ namespace TransportApp
             
             foreach (Station t in TempStation)
             {
-                if (t.Name != null)//Abfangen von stationen die Keinen Namen haben
+                if (t.Name == null) continue;
+                switch (TextBoxName)
                 {
-                    if (TextBoxName == "txbFrom")
-                    {
+                    case "txbFrom":
                         this.lsbFrom.Items.Add(t.Name);
-                    }
-
-                    if (TextBoxName == "txbTo")
-                    {
+                        break;
+                    case "txbTo":
                         this.lsbTo.Items.Add(t.Name);
-                    }
+                        break;
                 }
             }
 
@@ -85,14 +83,7 @@ namespace TransportApp
                 string Platform = "";
                 string DepartureTime = t.From.Departure.Substring(11, 5);
                 string ArrivalTime = t.To.Arrival.Substring(11, 5);
-                if (t.From.Platform == null)
-                {
-                    Platform = "No Information";
-                }
-                else
-                {
-                    Platform = t.From.Platform;
-                }
+                Platform = t.From.Platform ?? "No Information";
                 string Duration = t.Duration.Substring(3, 5);
 
                 this.dgvDepatures.Rows.Add(Platform,DepartureTime, ArrivalTime, Duration);
@@ -156,7 +147,7 @@ namespace TransportApp
             else
             {
                 S = TempStation.First();
-                System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate.ToString().Replace(",", ".") + "," + s.Coordinate.YCoordinate)?.ToString().Replace(",", ".");
+                System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + S.Coordinate.XCoordinate.ToString().Replace(",", ".") + "," + S.Coordinate.YCoordinate)?.ToString().Replace(",", ".");
             }
         }
 
@@ -176,7 +167,7 @@ namespace TransportApp
             else
             {
                 S = TempStation.First();
-                System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate + "," + s.Coordinate.YCoordinate);
+                System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + S.Coordinate.XCoordinate + "," + S.Coordinate.YCoordinate);
             }
         }
 

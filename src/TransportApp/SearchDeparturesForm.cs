@@ -17,16 +17,6 @@ namespace TransportApp
             this.lsbStationName.AutoSize = true;
         }
 
-        //private void OtherForm(object sender, EventArgs e)
-        //{
-        //    var SenderButton = sender as Button;
-
-        //    if (SenderButton.Name == this.btnConnectionsForm.Name)
-        //    {
-        //        this.Close();
-        //    }
-        //}
-
         private void CurrentLocationMapClick(object sender, EventArgs e)//Location wird auf Googel-Maps angezeigt
         {
             SwissTransport.Transport Station = new Transport();
@@ -71,8 +61,6 @@ namespace TransportApp
             string TextBoxInput = SenderTextBox.Text;
             string TextBoxName = SenderTextBox.Name;
 
-            Station TempStationObject;
-
             if (TextBoxName == "txbStationName")
             {
                 this.lsbStationName.Items.Clear();
@@ -97,7 +85,7 @@ namespace TransportApp
                 if (TempStation.Count != 0 && this.txbCurrentLocation.Text != "")
                 {
 
-                    TempStationObject = TempStation.First();
+                    Station TempStationObject = TempStation.First();
 
                     SwissTransport.Transport StationLocation = new Transport();
                     List<SwissTransport.Station>TempStationLocation = new List<SwissTransport.Station>(); //List für Temporäre Stationen in ListBox From
@@ -114,17 +102,15 @@ namespace TransportApp
 
             foreach (Station t in TempStation)
             {
-                if (t.Name != null) //Abfangen von stationen die Keinen Namen haben
+                if (t.Name == null) continue;
+                switch (TextBoxName)
                 {
-                    if (TextBoxName == "txbStationName")
-                    {
+                    case "txbStationName":
                         this.lsbStationName.Items.Add(t.Name);
-                    }
-
-                    if (TextBoxName == "txbCurrentLocation")
-                    {
+                        break;
+                    case "txbCurrentLocation":
                         this.lsbCurrentLocation.Items.Add(t.Name);
-                    }
+                        break;
                 }
             }
 
