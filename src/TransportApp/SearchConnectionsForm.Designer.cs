@@ -226,6 +226,7 @@
             this.txbFrom.Name = "txbFrom";
             this.txbFrom.Size = new System.Drawing.Size(340, 20);
             this.txbFrom.TabIndex = 4;
+            this.txbFrom.Click += new System.EventHandler(this.LeaveFocus);
             this.txbFrom.TextChanged += new System.EventHandler(this.SearchStation);
             // 
             // lsbTo
@@ -252,6 +253,7 @@
             this.txbTo.Name = "txbTo";
             this.txbTo.Size = new System.Drawing.Size(340, 20);
             this.txbTo.TabIndex = 6;
+            this.txbTo.Click += new System.EventHandler(this.LeaveFocus);
             this.txbTo.TextChanged += new System.EventHandler(this.SearchStation);
             // 
             // btnDeparturesForm
@@ -281,6 +283,7 @@
             this.rdbNow.TabStop = true;
             this.rdbNow.Text = "radioButton1";
             this.rdbNow.UseVisualStyleBackColor = true;
+            this.rdbNow.Click += new System.EventHandler(this.LeaveFocus);
             // 
             // lblNow
             // 
@@ -306,6 +309,7 @@
             this.rdbDateTime.TabIndex = 10;
             this.rdbDateTime.Text = "radioButton2";
             this.rdbDateTime.UseVisualStyleBackColor = true;
+            this.rdbDateTime.Click += new System.EventHandler(this.LeaveFocus);
             // 
             // dtpDepartureDate
             // 

@@ -76,8 +76,10 @@ namespace TransportApp
 
         private void SearchConnections(object sender, EventArgs e)
         {
-            SwissTransport.Transport TempConnectionVar = new Transport();   
+            SwissTransport.Transport TempConnectionVar = new Transport();
             List<SwissTransport.Connection> TempConnectionsList = new List<SwissTransport.Connection>();//List für Temporäre Connection in ListBox
+            this.dgvDepatures.Rows.Clear();
+            this.LeaveFocus();
 
             if (this.rdbDateTime.Checked == true)
             {
@@ -91,9 +93,17 @@ namespace TransportApp
             }
             foreach (Connection t in TempConnectionsList)
             {
+                string Platform = "";
                 string DepartureTime = t.From.Departure.Substring(11, 5);
                 string ArrivalTime = t.To.Arrival.Substring(11, 5);
-                string Platform = t.From.Platform;
+                if (t.From.Platform == null)
+                {
+                    Platform = "No Information";
+                }
+                else
+                {
+                    Platform = t.From.Platform;
+                }
                 string Duration = t.Duration.Substring(3, 5);
 
                 this.dgvDepatures.Rows.Add(Platform,DepartureTime, ArrivalTime, Duration);
@@ -129,6 +139,8 @@ namespace TransportApp
 
         private void OtherForm(object sender, EventArgs e)//Wird beim betätigen der beiden btn für das Öffnen der Forms ausgelöst
         {
+            this.LeaveFocus();
+
             var SenderButton = sender as Button;
 
             if (SenderButton.Name == this.btnDeparturesForm.Name)
@@ -206,6 +218,19 @@ namespace TransportApp
 
                 Process.Start(@"mailto:?subject=" + mailMessage.Subject + "&body=" + mailMessage.Body);
             }
+        }
+
+        private void LeaveFocus(object sender, EventArgs e)
+        {
+            this.lsbFrom.Items.Clear();
+            this.lsbFrom.Size = this.lsbFrom.MinimumSize;
+            this.lsbFrom.Enabled = false;
+            this.lsbFrom.Visible = false;
+
+            this.lsbTo.Items.Clear();
+            this.lsbTo.Enabled = false;
+            this.lsbTo.Size = this.lsbFrom.MinimumSize;
+            this.lsbTo.Visible = false;
         }
     }
 }

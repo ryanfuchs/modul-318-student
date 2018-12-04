@@ -39,9 +39,17 @@ namespace TransportApp
 
             TempStation = Station.GetStations(this.txbCurrentLocation.Text).StationList;
 
-            Station s = TempStation.First();
+            Station s;
 
-            System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate + "," + s.Coordinate.YCoordinate);
+            if (TempStation.Count == 0 || TempStation.First().Coordinate.XCoordinate == null)
+            {
+                MessageBox.Show("No Coordinates avivable!");
+            }
+            else
+            {
+                s = TempStation.First();
+                System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate + "," + s.Coordinate.YCoordinate);
+            }
         }
 
         private void StationNameMapClick(object sender, EventArgs e)
@@ -51,9 +59,17 @@ namespace TransportApp
 
             TempStation = Station.GetStations(this.txbStationName.Text).StationList;
 
-            Station s = TempStation.First();
+            Station s;
 
-            System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate + "," + s.Coordinate.YCoordinate);
+            if (TempStation.Count == 0 || TempStation.First().Coordinate.XCoordinate == null)
+            {
+                MessageBox.Show("No Coordinates avivable!");
+            }
+            else
+            {
+                s = TempStation.First();
+                System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate + "," + s.Coordinate.YCoordinate);
+            }
         }
 
         private void SearchStation(object sender, EventArgs e)
@@ -88,7 +104,7 @@ namespace TransportApp
 
             if (TextBoxName == "txbCurrentLocation")
             {
-                if (!(TempStation.Count == 0 || this.txbCurrentLocation.Text == ""));
+                if (TempStation.Count != 0 || this.txbCurrentLocation.Text != "")
                 {
 
                     TempStationObject = TempStation.First();
@@ -98,7 +114,17 @@ namespace TransportApp
 
                     TempStation = Station.GetStationsCordinates(TempStationObject).StationList;
                 }
+                else
+                {
+                    this.LeaveFocus();
+                }
+                
 
+            }
+
+            if (this.txbStationName.Text == "")
+            {
+                this.LeaveFocus();
             }
 
             foreach (Station t in TempStation)
@@ -121,15 +147,17 @@ namespace TransportApp
             
         }
 
-        private void btnConnectionsForm_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        //private void btnConnectionsForm_Click(object sender, EventArgs e)
+        //{
+        //    this.Close();
+        //}
 
         private void SearchDepartures(object sender, EventArgs e)
         {
             SwissTransport.Transport TempStationBoardVar = new Transport();
             List<SwissTransport.StationBoard> TempStationBoardList = new List<SwissTransport.StationBoard>();//List für Temporäre Connection in ListBox
+
+            this.LeaveFocus();
 
             string StationName;
             Station TempStationObject = new Station();
@@ -168,6 +196,8 @@ namespace TransportApp
 
                 this.dgvDepatures.Rows.Add(StationName, Departure, Line, To);
             }
+            
+            this.LeaveFocus();
         }
 
         public void LeaveFocus()
@@ -221,6 +251,19 @@ namespace TransportApp
         private void OpenConnectionsForm(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void LeaveFocus(object sender, EventArgs e)
+        {
+            this.lsbCurrentLocation.Items.Clear();
+            this.lsbCurrentLocation.Size = this.lsbCurrentLocation.MinimumSize;
+            this.lsbCurrentLocation.Enabled = false;
+            this.lsbCurrentLocation.Visible = false;
+
+            this.lsbStationName.Items.Clear();
+            this.lsbStationName.Enabled = false;
+            this.lsbStationName.Size = this.lsbStationName.MinimumSize;
+            this.lsbStationName.Visible = false;
         }
     }
 }

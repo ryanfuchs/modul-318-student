@@ -143,6 +143,7 @@
             this.rdbStationName.TabStop = true;
             this.rdbStationName.Text = "radioButton1";
             this.rdbStationName.UseVisualStyleBackColor = true;
+            this.rdbStationName.CheckedChanged += new System.EventHandler(this.LeaveFocus);
             // 
             // lblStationNameRDB
             // 
@@ -199,7 +200,7 @@
             this.dgvDepatures.Location = new System.Drawing.Point(102, 214);
             this.dgvDepatures.Name = "dgvDepatures";
             this.dgvDepatures.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dgvDepatures.Size = new System.Drawing.Size(493, 259);
+            this.dgvDepatures.Size = new System.Drawing.Size(493, 256);
             this.dgvDepatures.TabIndex = 16;
             this.dgvDepatures.TabStop = false;
             // 
@@ -251,6 +252,7 @@
             this.txbCurrentLocation.Name = "txbCurrentLocation";
             this.txbCurrentLocation.Size = new System.Drawing.Size(343, 20);
             this.txbCurrentLocation.TabIndex = 6;
+            this.txbCurrentLocation.Click += new System.EventHandler(this.LeaveFocus);
             this.txbCurrentLocation.TextChanged += new System.EventHandler(this.SearchStation);
             // 
             // btnDeparturesForm
@@ -278,6 +280,7 @@
             this.rdbCurrentLocation.TabIndex = 10;
             this.rdbCurrentLocation.Text = "rdbCurrentLocation";
             this.rdbCurrentLocation.UseVisualStyleBackColor = true;
+            this.rdbCurrentLocation.CheckedChanged += new System.EventHandler(this.LeaveFocus);
             // 
             // txbStationName
             // 
@@ -289,6 +292,7 @@
             this.txbStationName.Name = "txbStationName";
             this.txbStationName.Size = new System.Drawing.Size(343, 20);
             this.txbStationName.TabIndex = 3;
+            this.txbStationName.Click += new System.EventHandler(this.LeaveFocus);
             this.txbStationName.TextChanged += new System.EventHandler(this.SearchStation);
             // 
             // label1
@@ -336,6 +340,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.CurrentLocationMapClick);
             // 
             // lsbCurrentLocation
             // 
