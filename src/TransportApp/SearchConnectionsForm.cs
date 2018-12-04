@@ -147,7 +147,7 @@ namespace TransportApp
 
             TempStation = Station.GetStations(this.txbFrom.Text).StationList;
 
-            Station s;
+            Station S;
 
             if (TempStation.Count == 0 || TempStation.First().Coordinate.XCoordinate == null)
             {
@@ -155,7 +155,7 @@ namespace TransportApp
             }
             else
             {
-                s = TempStation.First();
+                S = TempStation.First();
                 System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate.ToString().Replace(",", ".") + "," + s.Coordinate.YCoordinate)?.ToString().Replace(",", ".");
             }
         }
@@ -167,7 +167,7 @@ namespace TransportApp
 
             TempStation = Station.GetStations(this.txbTo.Text).StationList;
 
-            Station s;
+            Station S;
 
             if (TempStation.Count == 0 || TempStation.First().Coordinate.XCoordinate == null)
             {
@@ -175,7 +175,7 @@ namespace TransportApp
             }
             else
             {
-                s = TempStation.First();
+                S = TempStation.First();
                 System.Diagnostics.Process.Start("https://www.google.com/maps/place/" + s.Coordinate.XCoordinate + "," + s.Coordinate.YCoordinate);
             }
         }
@@ -187,25 +187,25 @@ namespace TransportApp
 
         private void SendMail(object sender, EventArgs e)//Methode für das Versenden eines Mails
         {
-            var mailMessage = new MailMessage();
+            var MailMessage = new MailMessage();
             {
-                mailMessage.Subject = "Connections";
-                mailMessage.From = new MailAddress("info@transportgate.ch");
-                mailMessage.IsBodyHtml = true;
+                MailMessage.Subject = "Connections";
+                MailMessage.From = new MailAddress("info@transportgate.ch");
+                MailMessage.IsBodyHtml = true;
 
                 var NewLine = "%0D%0A"; //UniCode
-                mailMessage.Body = "Connections:" + NewLine + NewLine;
-                mailMessage.Body += "Form:" + this.txbFrom.Text + ", " + "To:" + this.txbTo.Text + NewLine + NewLine;
+                MailMessage.Body = "Connections:" + NewLine + NewLine;
+                MailMessage.Body += "Form:" + this.txbFrom.Text + ", " + "To:" + this.txbTo.Text + NewLine + NewLine;
 
                 for (int i = 0; i < this.dgvDepatures.RowCount - 1; i++)
                 {
-                    mailMessage.Body += "Platform: " + this.dgvDepatures.Rows[i].Cells[0].Value + NewLine +
+                    MailMessage.Body += "Platform: " + this.dgvDepatures.Rows[i].Cells[0].Value + NewLine +
                                         "Departure: " + this.dgvDepatures.Rows[i].Cells[1].Value + NewLine +
                                         "Arrival: " + this.dgvDepatures.Rows[i].Cells[2].Value + NewLine +
                                         "Duration: " + this.dgvDepatures.Rows[i].Cells[3].Value + NewLine + NewLine;
                 }
 
-                Process.Start(@"mailto:?subject=" + mailMessage.Subject + "&body=" + mailMessage.Body);
+                Process.Start(@"mailto:?subject=" + MailMessage.Subject + "&body=" + MailMessage.Body);
             }
         }
 
