@@ -196,7 +196,7 @@
             this.dgvDepatures.Location = new System.Drawing.Point(102, 214);
             this.dgvDepatures.Name = "dgvDepatures";
             this.dgvDepatures.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dgvDepatures.Size = new System.Drawing.Size(493, 279);
+            this.dgvDepatures.Size = new System.Drawing.Size(493, 259);
             this.dgvDepatures.TabIndex = 16;
             this.dgvDepatures.TabStop = false;
             // 

@@ -4,14 +4,17 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net.Mail;
 using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Lifetime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using Fsolutions.Fbase.Common.Mail;
 using SwissTransport;
 
 namespace TransportApp
@@ -67,6 +70,8 @@ namespace TransportApp
                     }
                 }
             }
+
+            this.dgvDepatures.Rows.Clear();
         }
 
         private void SearchConnections(object sender, EventArgs e)
@@ -167,6 +172,54 @@ namespace TransportApp
         public void ShowForm()
         {
             this.Show();
+        }
+
+        private void SendMail(object sender, EventArgs e)
+        {
+            //int Rows = 1;
+            //int Cells = 0;
+
+            //var MailStringBuilder = new StringBuilder();
+            //MailStringBuilder.AppendLine("Connections");
+            //MailStringBuilder.AppendLine($"From:{this.txbFrom.Text} To:{this.txbTo.Text}");
+            //MailStringBuilder.Append("<tabel border='1' style='border-collapse:collapse' cellpadding='8'>");
+            //MailStringBuilder.Append(
+            //    "<tr><th>Platform</th><th>Departure</th><th>Arrival</th><th>Duration</th></tr>");
+            //for(int i = 0; i <= this.dgvDepatures.RowCount; i++)
+            //{
+            //    MailStringBuilder.Append("<tr>");
+            //    MailStringBuilder.Append($"<td>{this.dgvDepatures.Rows[Rows].Cells[Cells].Value}</td>");
+            //    Cells++;
+            //    MailStringBuilder.Append($"<td>{this.dgvDepatures.Rows[Rows].Cells[Cells].Value}</td>");
+            //    Cells++;
+            //    MailStringBuilder.Append($"<td>{this.dgvDepatures.Rows[Rows].Cells[Cells].Value}</td>");
+            //    Cells++;
+            //    MailStringBuilder.Append($"<td>{this.dgvDepatures.Rows[Rows].Cells[Cells].Value}</td>");
+            //    MailStringBuilder.Append("</tr>");
+            //    Cells = 0;
+            //    Rows++;
+            //}
+
+            //MailStringBuilder.Append("</table>");
+
+
+
+            var mailMessage = new MailMessage();
+            {
+                mailMessage.Subject = "Connections";
+                mailMessage.From = new MailAddress("info@transportgate.ch");
+                mailMessage.IsBodyHtml = true;
+
+                var NewLine = "%0D%0A"; //UniCode
+                mailMessage.Body = "Connection:" + NewLine;
+                mailMessage.Body += "Form:" + this.txbFrom.Text + ", " + "To:" + this.txbTo.Text + NewLine +
+                    "Platform: " + this.dgvDepatures.Rows[1].Cells[0].Value + NewLine +
+                    "Departure: " + this.dgvDepatures.Rows[1].Cells[1].Value + NewLine +
+                    "Arrival: " + this.dgvDepatures.Rows[1].Cells[2].Value + NewLine +
+                    "Duration: " + this.dgvDepatures.Rows[1].Cells[3].Value;
+
+                Process.Start(@"mailto:?subject=" + mailMessage.Subject + "&body=" + mailMessage.Body);
+            }
         }
     }
 }

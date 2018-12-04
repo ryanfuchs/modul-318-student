@@ -52,10 +52,12 @@
             this.btnConnectionsForm = new System.Windows.Forms.Button();
             this.pbxLocation2 = new System.Windows.Forms.PictureBox();
             this.pbxLocation1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepatures)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLocation2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLocation1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -88,6 +90,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btnConnectionsForm, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pbxLocation2, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.pbxLocation1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 3, 7);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 9;
@@ -370,6 +373,17 @@
             this.pbxLocation1.TabStop = false;
             this.pbxLocation1.Click += new System.EventHandler(this.LocationClickFrom);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(453, 184);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(14, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.SendMail);
+            // 
             // SearchConnectionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,6 +399,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepatures)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLocation2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLocation1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -414,5 +429,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDuration;
         private System.Windows.Forms.PictureBox pbxLocation2;
         private System.Windows.Forms.PictureBox pbxLocation1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

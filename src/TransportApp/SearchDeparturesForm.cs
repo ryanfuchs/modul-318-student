@@ -56,6 +56,8 @@ namespace TransportApp
 
         private void SearchStation(object sender, EventArgs e)
         {
+            this.dgvDepatures.Rows.Clear();
+
             var SenderTextBox = sender as TextBox;
 
             string TextBoxInput = SenderTextBox.Text;
@@ -112,6 +114,8 @@ namespace TransportApp
                     }
                 }
             }
+
+            this.dgvDepatures.Rows.Clear();
             
         }
 
@@ -152,6 +156,7 @@ namespace TransportApp
                 TempStationBoardList = TempStationBoardVar.GetStationBoard(TempStationObject.Id).Entries;
                 StationName = this.txbStationName.Text;
             }
+
             foreach (StationBoard t in TempStationBoardList)
             {
                 string Departure = Convert.ToString(t.Stop.Departure);
